@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/21 22:42:00 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/21 23:21:00 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,26 @@ int	ft_atoi(char *input_str)
 		return (1);
 	}
 	return ((int)(result * sign));
+}
+
+int	duplicate_check(int *input)
+{
+	int	i;
+	int	buffer;
+
+	i = 0;
+	buffer = input[0];
+
+	while (input[i])
+	{
+		while (input[i])
+		{
+			if (input[i] == buffer)
+				ft_putstr("Duplicate found!");
+			i++;
+		}
+		i++;
+	}
 }
 
 int	input_to_array(int argc, char **str)
