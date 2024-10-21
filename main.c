@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/21 17:04:38 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/10/21 22:42:00 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
@@ -58,7 +59,7 @@ int	atoi_errors(char *input_str)
 	return (0);
 }
 
-int	atoi(char *input_str)
+int	ft_atoi(char *input_str)
 {
 	int		i;
 	int		sign;
@@ -89,35 +90,32 @@ int	atoi(char *input_str)
 	return ((int)(result * sign));
 }
 
-int	more_then_one_argument_input(char **str)
+int	input_to_array(int argc, char **str)
 {
 	int	i;
 	int	buffer;
+	int	*unsorted_ints;
 
 	i = 1;
+	unsorted_ints = malloc(argc * sizeof(int));
 	printf("Unsorted numbers:\n");
 	while (str[i])
 	{
-		buffer = atoi(str[i]);
-		printf("\t\t%d\n", buffer);
+		buffer = ft_atoi(str[i]);
+		printf("\t%d\n", buffer);
+		unsorted_ints[i] = buffer;
 		i++;
 	}
-	return (0);
-}
-
-int	one_argument_input(char *str)
-{
-	int	i;
-	int	j;
-	char *splited_input;
-
 	i = 1;
-	j = 0;
-		while (str[i][j])
-		{
-			atoi
-			j++;
-		}
+	while (str[i])
+	{
+		buffer = ft_atoi(str[i]);
+		unsorted_ints[i] = buffer;
+		printf("\t added to an array %d\n", buffer);
+		i++;
+	}
+	free(unsorted_ints);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -127,10 +125,8 @@ int	main(int argc, char **argv)
 		ft_putstr("Wrong number of arguments.\n"
 			"Should be more then two arguments.\n");
 	}
-	else if (argc == 2)
-		one_argument_input(argv);
 	else
-		more_then_one_argument_input(argv);
+		input_to_array(argc - 1, argv);
 	ft_putstr("\n");
 	return (0);
 }
