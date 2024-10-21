@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/20 21:57:54 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:04:38 by antonsplavn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ void	ft_putstr(char *str)
 int	atoi_errors(char *input_str)
 {
 	int	i;
-	int	output;
 
 	i = 0;
-	output = 0;
-
 	if (input_str[i] == '-')
 		i++;
 	while (input_str[i])
@@ -92,7 +89,7 @@ int	atoi(char *input_str)
 	return ((int)(result * sign));
 }
 
-int	more_then_one_argument_output(char **str)
+int	more_then_one_argument_input(char **str)
 {
 	int	i;
 	int	buffer;
@@ -108,6 +105,21 @@ int	more_then_one_argument_output(char **str)
 	return (0);
 }
 
+int	one_argument_input(char *str)
+{
+	int	i;
+	int	j;
+	char *splited_input;
+
+	i = 1;
+	j = 0;
+		while (str[i][j])
+		{
+			atoi
+			j++;
+		}
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
@@ -115,8 +127,10 @@ int	main(int argc, char **argv)
 		ft_putstr("Wrong number of arguments.\n"
 			"Should be more then two arguments.\n");
 	}
+	else if (argc == 2)
+		one_argument_input(argv);
 	else
-		more_then_one_argument_output(argv);
+		more_then_one_argument_input(argv);
 	ft_putstr("\n");
 	return (0);
 }
