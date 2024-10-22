@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/22 20:35:09 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:00:03 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,17 @@ int	duplicate_check(int *input, int size)
 
 	j = 0;
 	buffer = input[0];
-	while (input[j] <= size)
+	while (j <= size)
 	{
 		buffer = input[j];
 		i = j + 1;
-		while (input[i] <= size)
+		while (i <= size)
 		{
 			if (input[i] == buffer)
-				ft_putstr("Duplicate found!");
+			{
+				ft_putstr("Error duplicate found!");
+				return (1);
+			}
 			i++;
 		}
 		j++;
