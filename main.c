@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/21 23:21:00 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:35:09 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,51 +90,67 @@ int	ft_atoi(char *input_str)
 	return ((int)(result * sign));
 }
 
-int	duplicate_check(int *input)
+int	duplicate_check(int *input, int size)
 {
 	int	i;
+	int	j;
 	int	buffer;
 
-	i = 0;
+	j = 0;
 	buffer = input[0];
-
-	while (input[i])
+	while (input[j] <= size)
 	{
-		while (input[i])
+		buffer = input[j];
+		i = j + 1;
+		while (input[i] <= size)
 		{
 			if (input[i] == buffer)
 				ft_putstr("Duplicate found!");
 			i++;
 		}
-		i++;
+		j++;
 	}
+	return (0);
 }
 
 int	input_to_array(int argc, char **str)
 {
 	int	i;
 	int	buffer;
-	int	*unsorted_ints;
+	int	*unsorted_numbers;
 
 	i = 1;
-	unsorted_ints = malloc(argc * sizeof(int));
-	printf("Unsorted numbers:\n");
-	while (str[i])
+	unsorted_numbers = malloc(argc * sizeof(int));
+	if (unsorted_numbers == NULL)
+	{
+		ft_putstr("Memory allocation error\n");
+		return (1);
+	}
+
+	ft_putstr("\n");
+	ft_putstr("Unsorted numbers:\n");
+	while (i <= argc)
 	{
 		buffer = ft_atoi(str[i]);
-		printf("\t%d\n", buffer);
-		unsorted_ints[i] = buffer;
+		printf("\t\t\t%d\n", buffer);
 		i++;
 	}
+
+	ft_putstr("\n");
+	ft_putstr("Unsorted numbers in an array:\n");
 	i = 1;
-	while (str[i])
+	while (i <= argc)
 	{
 		buffer = ft_atoi(str[i]);
-		unsorted_ints[i] = buffer;
-		printf("\t added to an array %d\n", buffer);
+		unsorted_numbers[i - 1] = buffer;
+		printf("\t\t\t%d\n", unsorted_numbers [i - 1]);
 		i++;
 	}
-	free(unsorted_ints);
+
+	duplicate_check(unsorted_numbers, argc);
+
+	free(unsorted_numbers);
+
 	return (0);
 }
 
