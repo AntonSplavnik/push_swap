@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/22 21:00:03 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/23 20:52:45 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@
 
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
+
+int	*ft_realloc(int *input_array, int new_leangth)
+{
+	int	*realocatd_array;
+
+	realocatd_array = malloc(new_leangth * 4);
+	if (realocatd_array == NULL)
+		ft_putstr("Memory allocation error");
+	new_leangth = *input_array;
+	free(input_array);
+}
 
 void	ft_putstr(char *str)
 {
@@ -30,7 +41,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	atoi_errors(char *input_str)
+int	string_restrictions_checker(char *input_str)
 {
 	int	i;
 
@@ -42,19 +53,19 @@ int	atoi_errors(char *input_str)
 		if (input_str[i] == ' ')
 		{
 			ft_putstr("Input numeric values without spases\n");
-			return (1);
+			return (-999999);
 		}
 		else if (input_str[i] < '0' || input_str[i] > '9')
 		{
 			ft_putstr("Non numeric value found\n");
-			return (1);
+			return (-999999);
 		}
 		i++;
 	}
 	if (input_str[0] == '-' && i == 1)
 	{
 		ft_putstr("Invalid number format\n");
-		return (1);
+		return (-999999);
 	}
 	return (0);
 }
@@ -64,14 +75,14 @@ int	ft_atoi(char *input_str)
 	int		i;
 	int		sign;
 	long	result;
-	int		checker_flag;
+	int		flag_checker;
 
 	i = 0;
 	sign = 1;
 	result = 0;
-	checker_flag = atoi_errors(input_str);
-	if (checker_flag != 0)
-		return (1);
+	flag_checker = string_restrictions_checker(input_str);
+	if (flag_checker != 0)
+		return (-999999);
 	if (input_str[i] == '-' && i == 0)
 	{
 		sign *= -1;
@@ -116,7 +127,7 @@ int	duplicate_check(int *input, int size)
 	return (0);
 }
 
-int	input_to_array(int argc, char **str)
+void	input_to_array(int argc, char **str)
 {
 	int	i;
 	int	buffer;
@@ -127,34 +138,25 @@ int	input_to_array(int argc, char **str)
 	if (unsorted_numbers == NULL)
 	{
 		ft_putstr("Memory allocation error\n");
-		return (1);
+		exit (1);
 	}
-
 	ft_putstr("\n");
 	ft_putstr("Unsorted numbers:\n");
-	while (i <= argc)
-	{
-		buffer = ft_atoi(str[i]);
-		printf("\t\t\t%d\n", buffer);
-		i++;
-	}
-
-	ft_putstr("\n");
-	ft_putstr("Unsorted numbers in an array:\n");
 	i = 1;
 	while (i <= argc)
 	{
 		buffer = ft_atoi(str[i]);
+		if (buffer == -999999)
+		{
+			free(unsorted_numbers);
+			exit (1);
+		}
 		unsorted_numbers[i - 1] = buffer;
 		printf("\t\t\t%d\n", unsorted_numbers [i - 1]);
 		i++;
 	}
-
 	duplicate_check(unsorted_numbers, argc);
-
 	free(unsorted_numbers);
-
-	return (0);
 }
 
 int	main(int argc, char **argv)
