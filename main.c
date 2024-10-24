@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/23 20:52:45 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:58:21 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,67 @@
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
 
+void	ft_memset(void *str, int c, size_t number)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < number)
+	{
+		((char *)str)[i] = (char)c;
+		i++;
+	}
+}
+
+void	ft_bzero(void *str, size_t number)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < number)
+	{
+		((char *)str)[i] = 0;
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t num, size_t size)
+{
+	void	*new_allocation;
+
+	new_allocation = malloc(num * size);
+	if (new_allocation == NULL)
+	{
+		return (NULL);
+	}
+	ft_bzero(new_allocation, num * size);
+	return (new_allocation);
+}
+
+int	count_ints_in_an_array(int *numbers)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (numbers[i + 1] );
+}
+
 int	*ft_realloc(int *input_array, int new_leangth)
 {
+	int	i;
 	int	*realocatd_array;
 
-	realocatd_array = malloc(new_leangth * 4);
+	i = 0;
+	realocatd_array = ft_calloc(new_leangth, sizeof(int));
 	if (realocatd_array == NULL)
+	{
 		ft_putstr("Memory allocation error");
-	new_leangth = *input_array;
+		return (NULL);
+	}
 	free(input_array);
+	return (realocatd_array);
 }
 
 void	ft_putstr(char *str)
@@ -134,7 +186,7 @@ void	input_to_array(int argc, char **str)
 	int	*unsorted_numbers;
 
 	i = 1;
-	unsorted_numbers = malloc(argc * sizeof(int));
+	unsorted_numbers = ft_calloc(argc, sizeof(int));
 	if (unsorted_numbers == NULL)
 	{
 		ft_putstr("Memory allocation error\n");
