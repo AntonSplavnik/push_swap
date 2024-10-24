@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:48:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/24 18:56:18 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:48:23 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,10 @@ int	ft_atoi(char *input_str)
 	int		i;
 	int		sign;
 	long	result;
-	int		flag_checker;
 
 	i = 0;
 	sign = 1;
 	result = 0;
-	flag_checker = string_restrictions_checker(input_str);
-	if (flag_checker != 0)
-		return (-999999);
 	if (input_str[i] == '-' && i == 0)
 	{
 		sign *= -1;
