@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:48:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/24 19:48:23 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:52:42 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,22 @@ void	*ft_calloc(size_t num, size_t size)
 	return (new_allocation);
 }
 
-int	count_ints_in_an_array(int *numbers)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (numbers[i + 1])
-	{
-
-	}
-}
-
-int	*ft_realloc(int *input_array, int new_leangth)
+int	*ft_realloc(int *input_array, int new_length, int old_length)
 {
 	int	i;
 	int	*realocatd_array;
 
 	i = 0;
-	realocatd_array = ft_calloc(new_leangth, sizeof(int));
+	realocatd_array = ft_calloc(new_length, sizeof(int));
 	if (realocatd_array == NULL)
 	{
 		ft_putstr("Memory allocation error");
 		return (NULL);
+	}
+	while (i < old_length)
+	{
+		realocatd_array[i] = input_array[i];
+		i++;
 	}
 	free(input_array);
 	return (realocatd_array);
@@ -106,11 +98,6 @@ int	ft_atoi(char *input_str)
 	{
 		result = result * 10 + (input_str[i] - '0');
 		i++;
-	}
-	if (result > INT_MAX || (-result) < INT_MIN)
-	{
-		ft_putstr("One of the numbers is over the INT limits\n");
-		return (1);
 	}
 	return ((int)(result * sign));
 }

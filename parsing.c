@@ -6,13 +6,13 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/24 19:08:04 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:51:44 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	string_restrictions_checker(char *input_str)
+int	string_restrictions(char *input_str)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int	string_restrictions_checker(char *input_str)
 	{
 		if (input_str[i] == ' ')
 		{
-			ft_putstr("Input numeric values without spases\n");
+			ft_putstr("Input numeric values without spaces\n");
 			return (-999999);
 		}
 		else if (input_str[i] < '0' || input_str[i] > '9')
@@ -41,6 +41,16 @@ int	string_restrictions_checker(char *input_str)
 	return (0);
 }
 
+int	limits(int number)
+{
+	if (number > INT_MAX || number < INT_MIN)
+	{
+		ft_putstr("One of the numbers is over the INT limits\n");
+		return (1);
+	}
+	return (0);
+}
+
 int	duplicate_check(int *input, int size)
 {
 	int	i;
@@ -49,11 +59,11 @@ int	duplicate_check(int *input, int size)
 
 	j = 0;
 	buffer = input[0];
-	while (j <= size)
+	while (j < size)
 	{
 		buffer = input[j];
 		i = j + 1;
-		while (i <= size)
+		while (i < size)
 		{
 			if (input[i] == buffer)
 			{

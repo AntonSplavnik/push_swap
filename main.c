@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/24 20:38:31 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:06:26 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	input_to_array(int argc, char **str)
 {
 	int	i;
 	int	*unsorted_numbers;
-	int	flag_checker;
 
 	i = 1;
 	unsorted_numbers = ft_calloc(argc, sizeof(int));
@@ -28,8 +27,12 @@ void	input_to_array(int argc, char **str)
 	ft_putstr("\nUnsorted numbers:\n");
 	while (i <= argc)
 	{
-		flag_checker = string_restrictions_checker(str);
-		if (flag_checker != 0)
+		if (string_restrictions(str[i]) == 1)
+		{
+			free(unsorted_numbers);
+			exit (1);
+		}
+		if (limits(ft_atoi(str[i])) == 1)
 		{
 			free(unsorted_numbers);
 			exit (1);
