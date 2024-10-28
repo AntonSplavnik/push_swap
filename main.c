@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/27 19:25:52 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:46:32 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ void	input_to_array(int argc, char **str)
 {
 	int		i;
 	int		n;
-	int		element_counter;
+	int		elements_count;
 	int		*unsorted_numbers;
 	char	**arrs;
 
-	element_counter = 0;
+
 	i = 1;
+	elements_count = element_counter(str);
+
 	process_argument(**str);
 	while (str[i])
 	{

@@ -6,11 +6,52 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/26 18:17:32 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:26:59 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	element_counter(char **str)
+{
+	int	i;
+	int	j;
+	int	counter;
+
+	i = 1;
+	counter = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			while (str[i][j] == ' ')
+				j++;
+			if (str[i][j] == '-')
+			{
+				if (str[i][j + 1] < '0' || str[i][j + 1] > '9')
+				{
+					ft_putstr("Error: '-' not followed by a digit\n");
+					exit (1);
+				}
+				j++;
+			}
+			if (str[i][j] >= '0' && str[i][j] <= '9')
+			{
+				while (str[i][j] >= '0' && str[i][j] <= '9')
+					j++;
+				counter++;
+			}
+			else if (str[i][j] != ' ' && str[i][j] != '\0')
+			{
+				ft_putstr("Error: found non-numeric value\n");
+				exit (1);
+			}
+		}
+		i++;
+	}
+	return (counter);
+}
 
 int	string_restrictions(char *input_str)
 {

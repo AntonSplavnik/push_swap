@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:48:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/27 19:28:00 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:53:56 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,49 +101,69 @@ int	ft_atoi(char *input_str)
 	}
 	return ((int)(result * sign));
 }
-int	element_counter(char **str)
+
+char *ft_strncpy(char *dest, const char *src, size_t n)
 {
 	int	i;
-	int	j;
-	int	counter;
 
-	i = 1;
-	counter = 0;
-	while (str[i])
+	while (src[i] && i < n)
 	{
-		j = 0;
-		while (str[i][j])
-		{
-
-			while (str[i][j] == ' ')
-				j++;
-			if (str[i][j] == '-')
-			{
-				if (str[i][j + 1] < '0' || str[i][j + 1] > '9')
-				{
-					ft_putstr("Error: '-' not followed by a digit\n");
-					exit (1);
-				}
-				j++;
-			}
-			if (str[i][j] >= '0' && str[i][j] <= '9')
-			{
-				while (str[i][j] >= '0' && str[i][j] <= '9')
-					j++;
-				counter++;
-			}
-			else if (str[i][j] != ' ' && str[i][j] != '\0')
-			{
-				ft_putstr("Error: found non-numeric value\n");
-				exit (1);
-			}
-		}
+		dest[i] = src[i];
 		i++;
 	}
-	return (counter);
+	dest[i] = '\0';
+	return (dest);
 }
+
 
 char **ft_split(char *input, char c)
 {
+	char	**return_str;
+	int		token_counter;
+	int		start;
+	int		i;
+	int		j;
 
+	j = 0;
+	i = 0;
+	token_counter = 0;
+	while (input[i])
+	{
+		while (input[i] == c)
+			i++;
+		if (input[i] && input[i] != c)
+		{
+			token_counter++;
+			while (input[i] && input[i] != c)
+				i++;
+		}
+	}
+
+	return_str = ft_calloc((token_counter + 1), sizeof(char *));
+	if (return_str == NULL)
+		return (NULL);
+
+	i = 0;
+	while (input[i])
+	{
+		while (input[i] == c)
+			i++;
+
+		start = i;
+		while (input[i] && input[i] != c)
+			i++;
+
+		return_str[j] = ft_calloc((i - start + 1), sizeof(char));
+		if (return_str[j] == NULL)
+			return (NULL);
+
+		ft_strncpy(return_str[j], &input[start], i - start);
+		return_str[j][i - start] = '\0';
+
+		j++;
+	}
+
+	return_str[j] = NULL;
+	return (return_str);
 }
+
