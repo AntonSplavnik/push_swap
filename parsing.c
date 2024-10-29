@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/28 14:26:59 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:14:52 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	element_counter(char **str)
 	counter = 0;
 	while (str[i])
 	{
+		while (str[i][0] == '\0')
+			i++;
+
 		j = 0;
 		while (str[i][j])
 		{
@@ -29,9 +32,11 @@ int	element_counter(char **str)
 				j++;
 			if (str[i][j] == '-')
 			{
-				if (str[i][j + 1] < '0' || str[i][j + 1] > '9')
+				if ((str[i][j + 1] < '0' || str[i][j + 1] > '9') ||
+				(j > 0 && str[i][j] != ' '))
 				{
-					ft_putstr("Error: '-' not followed by a digit\n");
+					ft_putstr("Error: Invalid '-' placement" \
+						"or '-' not followed by a digit\n");
 					exit (1);
 				}
 				j++;
@@ -65,19 +70,19 @@ int	string_restrictions(char *input_str)
 		if (input_str[i] == ' ')
 		{
 			ft_putstr("Error: Input numeric values without spaces\n");
-			return (-999999);
+			return (1);
 		}
 		else if (input_str[i] < '0' || input_str[i] > '9')
 		{
 			ft_putstr("Error: Non numeric value found\n");
-			return (-999999);
+			return (1);
 		}
 		i++;
 	}
 	if (input_str[0] == '-' && i == 1)
 	{
 		ft_putstr("Error:Invalid number format\n");
-		return (-999999);
+		return (1);
 	}
 	return (0);
 }
