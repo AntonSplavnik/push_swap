@@ -6,59 +6,39 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/29 16:14:52 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:30:22 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	element_counter(char **str)
+int	arg_counter(char **argv)
 {
-	int	i;
-	int	j;
-	int	counter;
+	int		i;
+	int		j;
+	int		count;
+	char	**splited_arg;
 
-	i = 1;
-	counter = 0;
-	while (str[i])
+	i = 0;
+	j = 0;
+	count = 0;
+	while (argv[i])
 	{
-		while (str[i][0] == '\0')
-			i++;
-
-		j = 0;
-		while (str[i][j])
+		splited_arg = ft_split(argv[i], ' ');
+		j++;
+		while (splited_arg[j])
 		{
-			while (str[i][j] == ' ')
-				j++;
-			if (str[i][j] == '-')
-			{
-				if ((str[i][j + 1] < '0' || str[i][j + 1] > '9') ||
-				(j > 0 && str[i][j] != ' '))
-				{
-					ft_putstr("Error: Invalid '-' placement" \
-						"or '-' not followed by a digit\n");
-					exit (1);
-				}
-				j++;
-			}
-			if (str[i][j] >= '0' && str[i][j] <= '9')
-			{
-				while (str[i][j] >= '0' && str[i][j] <= '9')
-					j++;
-				counter++;
-			}
-			else if (str[i][j] != ' ' && str[i][j] != '\0')
-			{
-				ft_putstr("Error: found non-numeric value\n");
-				exit (1);
-			}
+			count++;
+			free(splited_arg[j]);
+			j++;
 		}
 		i++;
+		free (splited_arg);
 	}
-	return (counter);
+	return (count);
 }
 
-int	string_restrictions(char *input_str)
+int	input_restrictions(char *input_str)
 {
 	int	i;
 
@@ -75,6 +55,12 @@ int	string_restrictions(char *input_str)
 		else if (input_str[i] < '0' || input_str[i] > '9')
 		{
 			ft_putstr("Error: Non numeric value found\n");
+			return (1);
+		}
+		else if (input_str[i] == '0' && \
+			(input_str[i + 1] >= '0' && input_str[i + 1] <= '9'))
+		{
+			ft_putstr ("Error: 0 before a bumber");
 			return (1);
 		}
 		i++;

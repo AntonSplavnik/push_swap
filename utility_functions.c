@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_functions.c                                 :+:      :+:    :+:   */
+/*   utility_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:48:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/29 18:44:47 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:58:00 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,6 @@ void	ft_putstr(char *str)
 	while (str[i])
 	{
 		write(1, &str[i], 1);
-		i++;
-	}
-}
-
-void	ft_memset(void *str, int c, size_t number)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < number)
-	{
-		((char *)str)[i] = (char)c;
 		i++;
 	}
 }
@@ -59,27 +47,6 @@ void	*ft_calloc(size_t num, size_t size)
 	return (new_allocation);
 }
 
-int	*ft_realloc(int *input_array, int new_length, int old_length)
-{
-	int	i;
-	int	*realocatd_array;
-
-	i = 0;
-	realocatd_array = ft_calloc(new_length, sizeof(int));
-	if (realocatd_array == NULL)
-	{
-		ft_putstr("Memory allocation error");
-		return (NULL);
-	}
-	while (i < old_length)
-	{
-		realocatd_array[i] = input_array[i];
-		i++;
-	}
-	free(input_array);
-	return (realocatd_array);
-}
-
 int	ft_atoi(char *input_str)
 {
 	int		i;
@@ -102,10 +69,11 @@ int	ft_atoi(char *input_str)
 	return ((int)(result * sign));
 }
 
-char *ft_strncpy(char *dest, const char *src, size_t n)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	int	i;
 
+	i = 0;
 	while (src[i] && i < n)
 	{
 		dest[i] = src[i];
@@ -114,56 +82,3 @@ char *ft_strncpy(char *dest, const char *src, size_t n)
 	dest[i] = '\0';
 	return (dest);
 }
-
-
-char **ft_split(char *input, char c)
-{
-	char	**return_str;
-	int		token_counter;
-	int		start;
-	int		i;
-	int		j;
-
-	j = 0;
-	i = 0;
-	token_counter = 0;
-	while (input[i])
-	{
-		while (input[i] == c)
-			i++;
-		if (input[i] && input[i] != c)
-		{
-			token_counter++;
-			while (input[i] && input[i] != c)
-				i++;
-		}
-	}
-
-	return_str = ft_calloc((token_counter + 1), sizeof(char *));
-	if (return_str == NULL)
-		return (NULL);
-
-	i = 0;
-	while (input[i])
-	{
-		while (input[i] == c)
-			i++;
-
-		start = i;
-		while (input[i] && input[i] != c)
-			i++;
-
-		return_str[j] = ft_calloc((i - start + 1), sizeof(char));
-		if (return_str[j] == NULL)
-			return (NULL);
-
-		ft_strncpy(return_str[j], &input[start], i - start);
-		return_str[j][i - start] = '\0';
-
-		j++;
-	}
-
-	return_str[j] = NULL;
-	return (return_str);
-}
-

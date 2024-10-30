@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/28 21:02:06 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:59:26 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,25 @@ typedef struct s_int_array
 {
 	int	*unsorted_numbers;
 	int	unsorted_numbers_num;
-}	t_int_array;
+}			t_int_array;
 
-
-//helper_functions.c
+//utility_functions.c
+int		ft_atoi(char *input_str);
 void	ft_putstr(char *str);
-void	ft_memset(void *str, int c, size_t number);
 void	ft_bzero(void *str, size_t number);
 void	*ft_calloc(size_t num, size_t size);
-int		*ft_realloc(int *input_array, int new_length, int old_length);
-int		ft_atoi(char *input_str);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
+
+//ft_split.c
+int		ft_split_token_counter(char *input, char c);
+void	ft_split_free_alloc(char **return_str, int j);
+char	**ft_split_fill_arrays(int token_counter,
+			char *input, char **return_str, char c);
 char	**ft_split(char *input, char c);
 
 //parsing.c
-int		element_counter(char **str);
-int		string_restrictions(char *input_str);
+int		arg_counter(char **str);
+int		input_restrictions(char *input_str);
 int		limits(int number);
 int		duplicate_check(int *input, int size);
 
