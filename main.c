@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/31 21:30:24 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/31 22:05:52 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	fill_array(char **argv, t_int_array int_array)
 	int	i;
 
 	i = 1;
+
 }
 
 void	input_to_array(int argc, char **argv)
@@ -50,7 +51,14 @@ void	input_to_array(int argc, char **argv)
 	t_int_array	int_array;
 
 	i = 0;
-	//Input restriction check
+
+	//int array allocation
+	int_array.unsorted_numbers_num = number_counter(argv);
+	int_array.unsorted_numbers = ft_calloc (number_counter(argv), sizeof(int));
+	if (int_array.unsorted_numbers == NULL)
+		return (NULL);
+
+	//Input restriction check and array fillig
 	while (argv[i])
 	{
 		processed_argument = process_argument(argv[i]);
@@ -60,7 +68,8 @@ void	input_to_array(int argc, char **argv)
 		j = 0;
 		while (processed_argument[j])
 		{
-			if (input_restrictions(processed_argument[j]) == 1)
+			if (input_restrictions(processed_argument[j]) == 1
+				|| limits(ft_atoi(processed_argument[i]) == 1))
 			{
 				while (j > 0)
 				{
@@ -76,17 +85,13 @@ void	input_to_array(int argc, char **argv)
 		i++;
 	}
 
-	//int array allocation
-	int_array.unsorted_numbers_num = number_counter(argv);
-	int_array.unsorted_numbers = ft_calloc (number_counter(argv), sizeof(int));
-	if (int_array.unsorted_numbers == NULL)
-		return (NULL);
+	if (duplicate_check(int_array.unsorted_numbers, int_array.unsorted_numbers_num) == 1)
+	{
+		free (int_array.unsorted_numbers);
+		exit (1);
+	}
 
-
-	fill_array(**argv, int_array);
 }
-
-
 
 int	main(int argc, char **argv)
 {
