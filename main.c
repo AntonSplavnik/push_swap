@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/30 21:07:27 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/31 21:30:24 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,71 +45,48 @@ void	fill_array(char **argv, t_int_array int_array)
 void	input_to_array(int argc, char **argv)
 {
 	int			i;
+	int			j;
+	char		**processed_argument;
 	t_int_array	int_array;
 
-	while (i < argc)
-		if (check_restrictions(argv) == 1)
+	i = 0;
+	//Input restriction check
+	while (argv[i])
+	{
+		processed_argument = process_argument(argv[i]);
+		if (processed_argument == NULL)
 			exit (1);
 
+		j = 0;
+		while (processed_argument[j])
+		{
+			if (input_restrictions(processed_argument[j]) == 1)
+			{
+				while (j > 0)
+				{
+					free(processed_argument[j - 1]);
+					j--;
+				}
+				free(processed_argument);
+				exit (1);
+			}
+			j++;
+		}
+		free(processed_argument);
+		i++;
+	}
+
 	//int array allocation
-	int_array.unsorted_numbers_num = arg_counter(argv);
-	int_array.unsorted_numbers = ft_calloc (arg_counter(argv), sizeof(int));
+	int_array.unsorted_numbers_num = number_counter(argv);
+	int_array.unsorted_numbers = ft_calloc (number_counter(argv), sizeof(int));
 	if (int_array.unsorted_numbers == NULL)
 		return (NULL);
+
 
 	fill_array(**argv, int_array);
 }
 
-void	input_to_array(int argc, char **argv)
-{
-	int		i;
-	int		n;
-	int		number_count_input_str;
-	int		*unsorted_numbers;
-	char	**arrs;
 
-	i = 1;
-	number_count_input_str = element_counter(argv);
-
-	process_argument(**argv);
-
-	// validation of a singular number: spaces, number, limits)
-	while (i <= argc)
-	{
-		if (input_restrictions(argv[i]) == 1)
-			exit (1);
-		else if (limits(ft_atoi(argv[i])) == 1)
-			exit (1);
-		i++;
-	}
-
-	//allocation of int array
-	i = 1;
-	unsorted_numbers = ft_calloc(argc, sizeof(int));
-	if (unsorted_numbers == NULL)
-	{
-		ft_putstr("Error: Memory allocation\n");
-		exit (1);
-	}
-
-	//filling int array with singular number
-	ft_putstr("\nUnsorted numbers:\n");
-	while (i <= argc)
-	{
-		unsorted_numbers[i - 1] = ft_atoi(argv[i]);
-		printf("\t\t\t%d\n", unsorted_numbers [i - 1]);
-		i++;
-	}
-
-	//duplicate check in an array
-	if (duplicate_check(unsorted_numbers, argc) == 1)
-	{
-		ft_putstr("Error: Duplicate found\n");
-		free(unsorted_numbers);
-		exit (1);
-	}
-	free(unsorted_numbers);
-}
 
 int	main(int argc, char **argv)
 {

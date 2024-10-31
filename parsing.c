@@ -6,13 +6,13 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/30 20:30:22 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:43:29 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	arg_counter(char **argv)
+int	number_counter(char **argv)
 {
 	int		i;
 	int		j;

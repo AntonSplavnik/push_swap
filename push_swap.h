@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/30 20:59:26 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:43:29 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**ft_split_fill_arrays(int token_counter,
 char	**ft_split(char *input, char c);
 
 //parsing.c
-int		arg_counter(char **str);
+int		number_counter(char **str);
 int		input_restrictions(char *input_str);
 int		limits(int number);
 int		duplicate_check(int *input, int size);
