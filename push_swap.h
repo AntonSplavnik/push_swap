@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/01 23:31:45 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/02 00:02:14 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**ft_split(char *input, char c);
 
 //parsing.c
 int		input_restrictions(char *input_str);
-int		limits(int number);
+int		limits(long number);
 int		duplicate_check(int *input, int size);
 
 //number_counter.c

@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/01 22:57:46 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/02 00:08:55 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	input_restrictions(char *input_str)
 			return (1);
 		}
 		else if (input_str[i] == '0' && \
-			(input_str[i + 1] >= '0' && input_str[i + 1] <= '9'))
+			(input_str[i + 1] < '0' || input_str[i + 1] > '9'))
 		{
 			ft_putstr ("Error: 0 before a bumber");
 			return (1);
@@ -48,7 +48,7 @@ int	input_restrictions(char *input_str)
 	return (0);
 }
 
-int	limits(int number)
+int	limits(long number)
 {
 	if (number > INT_MAX || number < INT_MIN)
 	{
