@@ -6,17 +6,17 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:13:53 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/01 17:37:36 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/01 23:53:04 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clenup_on_error(int j, char *processed_argument)
+void	clenup_on_error(int j, char **processed_argument)
 {
 	while (j > 0)
 	{
-		free(processed_argument[j - 1]);
+		free(processed_argument[j]);
 		j--;
 	}
 	free(processed_argument);
@@ -31,7 +31,7 @@ int	process_and_validate_argument(t_int_array int_array,
 		|| limits(ft_atoi(processed_argument)) == 1)
 		return (1);
 
-	int_array.unsorted_numbers[j] = atoi(processed_argument[j]);
+	int_array.unsorted_numbers[j] = ft_atoi(processed_argument);
 	return (0);
 }
 
@@ -54,7 +54,7 @@ void	fill_array(char **argv, t_int_array int_array)
 	int		j;
 	char	**processed_argument;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		processed_argument = process_argument(argv[i]);
@@ -64,8 +64,8 @@ void	fill_array(char **argv, t_int_array int_array)
 		while (processed_argument[j])
 		{
 			if (process_and_validate_argument(int_array, \
-				processed_argument[j], j) == 1)
-				clenup_on_error(j, processed_argument[j]);
+				processed_argument[j], j + i - 1) == 1)
+				clenup_on_error(j, processed_argument);
 			j++;
 		}
 		free_processed_argument(processed_argument);

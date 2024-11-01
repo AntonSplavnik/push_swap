@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:48:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/30 20:58:00 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/01 23:13:38 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_atoi(char *input_str)
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (src[i] && i < n)
@@ -81,4 +81,14 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

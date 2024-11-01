@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:12:32 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/01 17:14:36 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/01 23:16:13 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**process_argument(char *argv)
 	{
 		if (argv[i] == ' ')
 		{
-			splited_numbers = split(argv[i], ' ');
+			splited_numbers = ft_split(argv, ' ');
 			return (splited_numbers);
 		}
 		i++;
@@ -30,7 +30,8 @@ char	**process_argument(char *argv)
 	splited_numbers = ft_calloc(2, sizeof(char *));
 	if (splited_numbers == NULL)
 		return (NULL);
-	splited_numbers[0] = argv;
+	splited_numbers[0] = ft_calloc(ft_strlen((const char *)argv), sizeof(char *));
+	splited_numbers[0] = ft_strncpy(splited_numbers[0], (const char *)argv, (size_t)ft_strlen((const char *)argv));
 	splited_numbers[1] = NULL;
 	return (splited_numbers);
 }

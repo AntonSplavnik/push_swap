@@ -6,37 +6,11 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/10/31 20:43:29 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/01 22:57:46 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	number_counter(char **argv)
-{
-	int		i;
-	int		j;
-	int		count;
-	char	**splited_arg;
-
-	i = 0;
-	j = 0;
-	count = 0;
-	while (argv[i])
-	{
-		splited_arg = ft_split(argv[i], ' ');
-		j++;
-		while (splited_arg[j])
-		{
-			count++;
-			free(splited_arg[j]);
-			j++;
-		}
-		i++;
-		free (splited_arg);
-	}
-	return (count);
-}
 
 int	input_restrictions(char *input_str)
 {
@@ -54,6 +28,7 @@ int	input_restrictions(char *input_str)
 		}
 		else if (input_str[i] < '0' || input_str[i] > '9')
 		{
+			printf("ERROR --> %c\n", input_str[i]);
 			ft_putstr("Error: Non numeric value found\n");
 			return (1);
 		}
