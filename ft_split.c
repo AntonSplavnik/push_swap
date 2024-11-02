@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:38:38 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/01 22:02:15 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/02 20:15:00 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_split_token_counter(char *input, char c)
 	{
 		while (input[i] == c)
 			i++;
-		if (input[i] && input[i] != c)
+		if (input[i])
 		{
 			token_counter++;
 			while (input[i] && input[i] != c)
@@ -54,22 +54,20 @@ char	**ft_split_fill_arrays(char *input, char **return_str, char c)
 	{
 		while (input[i] == c)
 			i++;
-
 		start = i;
 		while (input[i] && input[i] != c)
 			i++;
-
-		return_str[j] = ft_calloc((i - start + 1), sizeof(char));
-
-		if (return_str[j] == NULL)
+		if (i > start)
 		{
-			ft_split_free_alloc(return_str, j - 1);
-			return (NULL);
+			return_str[j] = ft_calloc((i - start + 1), sizeof(char));
+			if (return_str[j] == NULL)
+			{
+				ft_split_free_alloc(return_str, j - 1);
+				return (NULL);
+			}
+			ft_strncpy(return_str[j], &input[start], i - start);
+			j++;
 		}
-
-		ft_strncpy(return_str[j], &input[start], i - start);
-
-		j++;
 	}
 	return_str[j] = NULL;
 	return (return_str);

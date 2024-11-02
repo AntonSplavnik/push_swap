@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/02 00:02:14 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/02 21:11:09 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_int_array
 {
 	int	*unsorted_numbers;
 	int	unsorted_numbers_num;
+	int	unsorted_numbers_iterator;
 }			t_int_array;
 
 //utility_functions.c
