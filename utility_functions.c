@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:48:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/01 23:13:38 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:59:43 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*ft_calloc(size_t num, size_t size)
 	return (new_allocation);
 }
 
-int	ft_atoi(char *input_str)
+long	ft_atoi(char *input_str)
 {
 	int		i;
 	int		sign;
@@ -66,7 +66,7 @@ int	ft_atoi(char *input_str)
 		result = result * 10 + (input_str[i] - '0');
 		i++;
 	}
-	return ((int)(result * sign));
+	return ((result * sign));
 }
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)

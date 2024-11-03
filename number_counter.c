@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 18:00:32 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/02 14:09:18 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:20:03 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	number_counter(char **argv)
 		{
 			count++;
 			free(splited_arg[j]);
-			// splited_arg[j] = NULL;
 			j++;
 		}
 		i++;

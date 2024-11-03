@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/02 21:11:54 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:21:02 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	input_to_array(char **argv)
 
 	//int array memory allocation
 	int_array.unsorted_numbers_num = number_counter(argv);
-	int_array.unsorted_numbers_iterator = 0;
-	printf("number of elements in the input array: %d\n", int_array.unsorted_numbers_num);
+	printf("Number of elements in the input array: %d\n", int_array.unsorted_numbers_num);
 	int_array.unsorted_numbers = ft_calloc (int_array.unsorted_numbers_num, sizeof(int));
 	if (int_array.unsorted_numbers == NULL)
 	{
 		free (int_array.unsorted_numbers);
 		exit (1);
 	}
+
 	//Input restriction check and array fillig
 	fill_array (argv, int_array);
 	// if (fill_array(argv, int_array) == NULL)
@@ -33,14 +33,12 @@ void	input_to_array(char **argv)
 	// 	free (int_array.unsorted_numbers);
 	// 	exit (1);
 	// }
-	for (size_t i = 0; i < int_array.unsorted_numbers_num; i++)
-	{
-		printf("Nuber: %d\n", int_array.unsorted_numbers[i]);
-	}
+	for (int i = 0; i < int_array.unsorted_numbers_num; i++)
+		printf("%d. Nuber in array: %d\n", i, int_array.unsorted_numbers[i]);
+
 	//Duplicate check
 	if (duplicate_check(int_array.unsorted_numbers, int_array.unsorted_numbers_num) == 1)
 	{
-		printf("Duplicaate found\n");
 		free (int_array.unsorted_numbers);
 		exit (1);
 	}

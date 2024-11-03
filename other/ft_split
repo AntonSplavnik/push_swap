@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 14:53:23 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 15:41:06 by asplavni         ###   ########.fr       */
+/*   Created: 2024/10/30 20:38:38 by asplavni          #+#    #+#             */
+/*   Updated: 2024/11/03 16:00:12 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap.h"
 
 int	ft_split_token_counter(char *input, char c)
 {
@@ -42,17 +40,6 @@ void	ft_split_free_alloc(char **return_str, int j)
 	}
 }
 
-char	*ft_split_calloc_call(char **return_str, int i, int j, int start)
-{
-	return_str[j] = ft_calloc((i - start + 1), sizeof(char));
-	if (return_str[j] == NULL)
-	{
-		ft_split_free_alloc(return_str, j - 1);
-		return (NULL);
-	}
-	return (return_str[j]);
-}
-
 char	**ft_split_fill_arrays(char *input, char **return_str, char c)
 {
 	int		i;
@@ -70,8 +57,12 @@ char	**ft_split_fill_arrays(char *input, char **return_str, char c)
 			i++;
 		if (i > start)
 		{
-			if (ft_split_calloc_call(return_str, i, j, start) == NULL)
+			return_str[j] = ft_calloc((i - start + 1), sizeof(char));
+			if (return_str[j] == NULL)
+			{
+				ft_split_free_alloc(return_str, j - 1);
 				return (NULL);
+			}
 			ft_strncpy(return_str[j], &input[start], i - start);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/02 20:56:38 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:50:22 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ int	input_restrictions(char *input_str)
 	i = 0;
 	if (input_str[i] == '-')
 		i++;
+	if (input_str[i] == '0' && \
+		(input_str[i + 1] >= '0' && input_str[i + 1] <= '9'))
+	{
+		ft_putstr ("Error: 0 before a number");
+		return (1);
+	}
 	while (input_str[i])
 	{
 		if (input_str[i] == ' ')
@@ -32,12 +38,12 @@ int	input_restrictions(char *input_str)
 			ft_putstr("Error: Non numeric value found\n");
 			return (1);
 		}
-		else if (input_str[i] == '0' && \
-			(input_str[i + 1] >= '0' && input_str[i + 1] <= '9'))
-		{
-			ft_putstr ("Error: 0 before a number");
-			return (1);
-		}
+		// else if (input_str[i] == '0' && \
+		// 	(input_str[i + 1] >= '0' && input_str[i + 1] <= '9'))
+		// {
+		// 	ft_putstr ("Error: 0 before a number");
+		// 	return (1);
+		// }
 		i++;
 	}
 	if (input_str[0] == '-' && i == 1)
@@ -74,6 +80,7 @@ int	duplicate_check(int *input, int size)
 		{
 			if (input[i] == buffer)
 			{
+				printf("Error: Duplicate found! ->%d\n", input[i]);
 				return (1);
 			}
 			i++;
