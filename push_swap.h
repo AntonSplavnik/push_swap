@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 19:39:32 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 21:16:23 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ int		process_and_validate_argument(t_int_array int_array,
 			char *processed_argument, int k);
 void	free_processed_argument(char **processed_argument);
 void	fill_array(char **argv, t_int_array int_array);
+
+//checker
+void	empty_argument_checker(char **argv);
 
 //main.c
 void	input_to_array(char **str);

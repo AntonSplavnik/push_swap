@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 20:54:34 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 21:16:18 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,22 @@ void	input_to_array(char **argv)
 	free (int_array.unsorted_numbers);
 }
 
+void	empty_argument_checker(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (argv[i][0] == '\0')
+		{
+			printf("Error: found empty argument\n");
+			exit (1);
+		}
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
@@ -55,7 +71,10 @@ int	main(int argc, char **argv)
 			"Should be more then two arguments.\n");
 	}
 	else
+	{
+		empty_input_checker(argv);
 		input_to_array(argv);
+	}
 	ft_putstr("\n");
 	// int i = 0;
 	// char *str = " hello world";
