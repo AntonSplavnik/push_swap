@@ -6,18 +6,21 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:13:53 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 16:31:46 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 19:39:40 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clenup_on_error(char **processed_argument, t_int_array int_array, int j)
+void	clenup_on_error(char **processed_argument, t_int_array int_array)
 {
-	while (j >= 0)
+	int	j;
+
+	j = 0;
+	while (processed_argument[j])
 	{
 		free(processed_argument[j]);
-		j--;
+		j++;
 	}
 	free(processed_argument);
 	free (int_array.unsorted_numbers);
@@ -59,7 +62,7 @@ void	fill_array(char **argv, t_int_array int_array)
 	k = 0;
 	while (argv[i])
 	{
-		processed_argument = process_argument(argv[i]);
+		processed_argument = ft_split(argv[i], ' ');
 		if (processed_argument == NULL)
 			exit (1);
 		j = 0;
@@ -67,7 +70,7 @@ void	fill_array(char **argv, t_int_array int_array)
 		{
 			if (process_and_validate_argument(int_array, \
 				processed_argument[j], k) == 1)
-				clenup_on_error(processed_argument, int_array, j);
+				clenup_on_error(processed_argument, int_array);
 			j++;
 			k++;
 		}

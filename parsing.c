@@ -6,11 +6,27 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 16:50:22 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:38:31 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	input_restrictions_helper(char *input_str, int i)
+{
+	if (input_str[i] == ' ')
+	{
+		ft_putstr("Error: Input numeric values without spaces\n");
+		return (1);
+	}
+	else if (input_str[i] < '0' || input_str[i] > '9')
+	{
+		printf("ERROR --> %c\n", input_str[i]);
+		ft_putstr("Error: Non numeric value found\n");
+		return (1);
+	}
+	return (0);
+}
 
 int	input_restrictions(char *input_str)
 {
@@ -27,28 +43,13 @@ int	input_restrictions(char *input_str)
 	}
 	while (input_str[i])
 	{
-		if (input_str[i] == ' ')
-		{
-			ft_putstr("Error: Input numeric values without spaces\n");
+		if (input_restrictions_helper(input_str, i) == 1)
 			return (1);
-		}
-		else if (input_str[i] < '0' || input_str[i] > '9')
-		{
-			printf("ERROR --> %c\n", input_str[i]);
-			ft_putstr("Error: Non numeric value found\n");
-			return (1);
-		}
-		// else if (input_str[i] == '0' && \
-		// 	(input_str[i + 1] >= '0' && input_str[i + 1] <= '9'))
-		// {
-		// 	ft_putstr ("Error: 0 before a number");
-		// 	return (1);
-		// }
 		i++;
 	}
 	if (input_str[0] == '-' && i == 1)
 	{
-		ft_putstr("Error:Invalid number format\n");
+		ft_putstr("Error: Invalid number format\n");
 		return (1);
 	}
 	return (0);

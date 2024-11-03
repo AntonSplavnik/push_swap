@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 16:21:02 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/03 20:54:34 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	input_to_array(char **argv)
 	//int array memory allocation
 	int_array.unsorted_numbers_num = number_counter(argv);
 	printf("Number of elements in the input array: %d\n", int_array.unsorted_numbers_num);
+
 	int_array.unsorted_numbers = ft_calloc (int_array.unsorted_numbers_num, sizeof(int));
 	if (int_array.unsorted_numbers == NULL)
 	{
