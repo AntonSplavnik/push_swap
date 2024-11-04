@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:12:32 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 18:46:54 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:13:48 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,15 @@
 char	**process_argument(char *argv)
 {
 	return (ft_split(argv, ' '));
+}
+
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

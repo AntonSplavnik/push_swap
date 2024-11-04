@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 21:16:23 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:03:35 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_bzero(void *str, size_t number);
 long	ft_atoi(char *input_str);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
-size_t	ft_strlen(const char *s);
 
 //ft_split.c
 int		ft_split_token_counter(char *input, char c);
@@ -46,10 +45,11 @@ char	*ft_split_calloc_call(char **return_str, int i, int j, int start);
 int		number_counter(char **argv);
 
 //parsing.c
-int		input_restrictions_helper(char *input_str, int i);
-int		input_restrictions(char *input_str);
+void	empty_argument_checker(char **argv);
 int		limits(long number);
 int		duplicate_check(int *input, int size);
+int		input_restrictions_helper(char *input_str, int i);
+int		input_restrictions(char *input_str);
 
 //fill_array.c
 void	clenup_on_error(char **processed_argument, \
@@ -59,11 +59,10 @@ int		process_and_validate_argument(t_int_array int_array,
 void	free_processed_argument(char **processed_argument);
 void	fill_array(char **argv, t_int_array int_array);
 
-//checker
-void	empty_argument_checker(char **argv);
+// input_to_array.c
+void	input_to_array(char **str);
 
 //main.c
-void	input_to_array(char **str);
 int		main(int argc, char **argv);
 
 #endif

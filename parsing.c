@@ -6,11 +6,27 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:57:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 21:01:18 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:31:12 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	empty_argument_checker(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (argv[i][0] == '\0')
+		{
+			printf("Error: found empty argument\n");
+			exit (1);
+		}
+		i++;
+	}
+}
 
 int	input_restrictions_helper(char *input_str, int i)
 {
@@ -33,11 +49,6 @@ int	input_restrictions(char *input_str)
 	int	i;
 
 	i = 0;
-	if (input_str[i] == 0)
-	{
-		printf("Eror: Empty argument found");
-		return (1);
-	}
 	if (input_str[i] == '-')
 		i++;
 	if (input_str[i] == '0' && \
