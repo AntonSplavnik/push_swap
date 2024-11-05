@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/05 18:38:58 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/05 21:50:36 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,49 @@ typedef struct s_stacks
 	int	stack_b_count;
 }			t_stacks;
 
-//utility_functions.c
+// utility_functions.c
 void	ft_putstr(char *str);
 void	ft_bzero(void *str, size_t number);
 long	ft_atoi(char *input_str);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 
-//ft_split.c
+// ft_split.c
 int		ft_split_token_counter(char *input, char c);
 void	ft_split_free_alloc(char **return_str, int j);
 char	**ft_split_fill_arrays(char *input, char **return_str, char c);
 char	**ft_split(char *input, char c);
 char	*ft_split_calloc_call(char **return_str, int i, int j, int start);
 
-//number_counter.c
+// number_counter.c
 int		number_counter(char **argv);
 
-//parsing.c
+// parsing.c
 void	empty_argument_checker(char **argv);
 int		limits(long number);
 int		duplicate_check(int *input, int size);
 int		input_restrictions_helper(char *input_str, int i);
 int		input_restrictions(char *input_str);
 
-//fill_array.c
+// fill_array.c
 void	clenup_on_error(char **processed_argument, t_stacks *int_array);
 int		process_and_validate_argument(t_stacks *int_array,
 			char *processed_argument, int k);
 void	free_processed_argument(char **processed_argument);
 void	fill_array(char **argv, t_stacks *int_array);
 
-// input_to_array.c
+// initialization
 void	initialization(char **str);
 void	stack_a_initialisation(t_stacks *int_arrays, char **argv);
 void	stack_b_initialisation(t_stacks	*int_arrays);
+void	algorythm(t_stacks *stacks);
+
+
+// sorting functions
+void	swap_a(t_stacks	*stacks);
+void	swap_b(t_stacks	*stacks);
+void	rotate_a(t_stacks *stacks);
+void	rotate_b(t_stacks *stacks);
 
 //main.c
 int		main(int argc, char **argv);
