@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/05 21:50:36 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/05 22:14:29 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	swap_a(t_stacks	*stacks);
 void	swap_b(t_stacks	*stacks);
 void	rotate_a(t_stacks *stacks);
 void	rotate_b(t_stacks *stacks);
+void	reverse_rotate_a(t_stacks *stacks);
+void	reverse_rotate_b(t_stacks *stacks);
 
 //main.c
 int		main(int argc, char **argv);

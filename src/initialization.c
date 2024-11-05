@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/05 21:54:30 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/05 22:14:46 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	stack_b_initialisation(t_stacks	*int_arrays)
 
 void	algorythm(t_stacks *stacks)
 {
-	rotate_a(stacks);
+	reverse_rotate_a(stacks);
 	for (int i = 0; i < stacks->stack_a_count; i++)
 		printf("%d. stack_A: %d\n", i, stacks->stack_a[i]);
 
-	rotate_b(stacks);
+	reverse_rotate_b(stacks);
 	for (int k = 0; k < stacks->stack_b_count; k++)
 		printf("%d. stack_B: %d\n", k, stacks->stack_b[k]);
 }
