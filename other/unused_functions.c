@@ -89,6 +89,7 @@ int	*ft_realloc(int *input_array, int new_length, int old_length)
 	free(input_array);
 	return (realocatd_array);
 }
+
 void	input_to_array(int argc, char **argv)
 {
 	int		i;
@@ -138,4 +139,39 @@ void	input_to_array(int argc, char **argv)
 		exit (1);
 	}
 	free(unsorted_numbers);
+}
+
+char	**process_argument(char *argv)
+{
+	int		i;
+	char	**splited_numbers;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (argv[i] == ' ')
+		{
+			splited_numbers = ft_split(argv, ' ');
+			return (splited_numbers);
+		}
+		i++;
+	}
+	splited_numbers = ft_calloc(2, sizeof(char *));
+	if (splited_numbers == NULL)
+		return (NULL);
+	splited_numbers[0] = ft_calloc(ft_strlen((const char *)argv), sizeof(char *));
+	splited_numbers[0] = ft_strncpy(splited_numbers[0],
+			(const char *)argv, (size_t)ft_strlen((const char *)argv));
+	splited_numbers[1] = NULL;
+	return (splited_numbers);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

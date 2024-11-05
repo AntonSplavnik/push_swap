@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/04 19:00:25 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:58:33 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		input_to_array(argv);
+		initialization(argv);
 	}
 	ft_putstr("\n");
 	return (0);

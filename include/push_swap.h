@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/04 16:03:35 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:38:58 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-typedef struct s_int_array
+typedef struct s_stacks
 {
-	int	*unsorted_numbers;
-	int	unsorted_numbers_num;
-}			t_int_array;
+	int	*stack_a;
+	int	*stack_b;
+	int	stack_a_count;
+	int	stack_b_count;
+}			t_stacks;
 
 //utility_functions.c
 void	ft_putstr(char *str);
@@ -52,15 +54,16 @@ int		input_restrictions_helper(char *input_str, int i);
 int		input_restrictions(char *input_str);
 
 //fill_array.c
-void	clenup_on_error(char **processed_argument, \
-			t_int_array int_array);
-int		process_and_validate_argument(t_int_array int_array,
+void	clenup_on_error(char **processed_argument, t_stacks *int_array);
+int		process_and_validate_argument(t_stacks *int_array,
 			char *processed_argument, int k);
 void	free_processed_argument(char **processed_argument);
-void	fill_array(char **argv, t_int_array int_array);
+void	fill_array(char **argv, t_stacks *int_array);
 
 // input_to_array.c
-void	input_to_array(char **str);
+void	initialization(char **str);
+void	stack_a_initialisation(t_stacks *int_arrays, char **argv);
+void	stack_b_initialisation(t_stacks	*int_arrays);
 
 //main.c
 int		main(int argc, char **argv);

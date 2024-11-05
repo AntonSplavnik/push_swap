@@ -6,12 +6,12 @@
 #    By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 20:36:45 by asplavni          #+#    #+#              #
-#    Updated: 2024/11/04 20:36:46 by asplavni         ###   ########.fr        #
+#    Updated: 2024/11/05 18:06:23 by asplavni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude
 
 # Directories
@@ -20,10 +20,10 @@ OBJ_DIR = obj
 INC_DIR = include
 
 # Source and object files
-SRC = $(SRC_DIR)/fill_array.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/input_to_array.c \
+SRC = $(SRC_DIR)/fill_array.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/initialization.c \
       $(SRC_DIR)/main.c $(SRC_DIR)/number_counter.c $(SRC_DIR)/parsing.c \
       $(SRC_DIR)/utility_functions.c
-OBJ = $(OBJ_DIR)/fill_array.o $(OBJ_DIR)/ft_split.o $(OBJ_DIR)/input_to_array.o \
+OBJ = $(OBJ_DIR)/fill_array.o $(OBJ_DIR)/ft_split.o $(OBJ_DIR)/initialization.o \
       $(OBJ_DIR)/main.o $(OBJ_DIR)/number_counter.o $(OBJ_DIR)/parsing.o \
       $(OBJ_DIR)/utility_functions.o
 

@@ -6,13 +6,13 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:13:53 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/03 19:39:40 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:38:58 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clenup_on_error(char **processed_argument, t_int_array int_array)
+void	clenup_on_error(char **processed_argument, t_stacks *int_array)
 {
 	int	j;
 
@@ -23,18 +23,17 @@ void	clenup_on_error(char **processed_argument, t_int_array int_array)
 		j++;
 	}
 	free(processed_argument);
-	free (int_array.unsorted_numbers);
+	free (int_array->stack_a);
 	exit (1);
 }
 
-int	process_and_validate_argument(t_int_array int_array,
+int	process_and_validate_argument(t_stacks *int_array,
 		char *processed_argument, int k)
 {
 	if (input_restrictions(processed_argument) == 1
 		|| limits(ft_atoi(processed_argument)) == 1)
 		return (1);
-	int_array.unsorted_numbers[k] = ft_atoi(processed_argument);
-	printf("%d. Inserted number: %d\n", k, int_array.unsorted_numbers[k]);
+	int_array->stack_a[k] = ft_atoi(processed_argument);
 	return (0);
 }
 
@@ -51,7 +50,7 @@ void	free_processed_argument(char **processed_argument)
 	free (processed_argument);
 }
 
-void	fill_array(char **argv, t_int_array int_array)
+void	fill_array(char **argv, t_stacks *int_array)
 {
 	int		i;
 	int		j;
