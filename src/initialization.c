@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/05 22:14:46 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/06 22:37:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	stack_a_initialisation(t_stacks *int_arrays, char **argv)
 	fill_array (argv, int_arrays);
 	for (int i = 0; i < int_arrays->stack_a_count; i++)
 		printf("%d. stack_A: %d\n", i, int_arrays->stack_a[i]);
-	if (duplicate_check(int_arrays->stack_a \
-		, int_arrays->stack_a_count) == 1)
-	{
-		free (int_arrays->stack_a);
-		exit (1);
-	}
+	// if (duplicate_check(int_arrays->stack_a \
+	// 	, int_arrays->stack_a_count) == 1)
+	// {
+	// 	free (int_arrays->stack_a);
+	// 	exit (1);
+	// }
 }
 
 void	stack_b_initialisation(t_stacks	*int_arrays)
 {
-	int_arrays->stack_b = calloc (int_arrays->stack_a_count, sizeof(int));
+	int_arrays->stack_b = malloc (int_arrays->stack_a_count * sizeof(int));
 	if (int_arrays->stack_b == NULL)
 	{
 		free (int_arrays->stack_a);
@@ -50,13 +50,8 @@ void	stack_b_initialisation(t_stacks	*int_arrays)
 
 void	algorythm(t_stacks *stacks)
 {
-	reverse_rotate_a(stacks);
-	for (int i = 0; i < stacks->stack_a_count; i++)
-		printf("%d. stack_A: %d\n", i, stacks->stack_a[i]);
-
-	reverse_rotate_b(stacks);
-	for (int k = 0; k < stacks->stack_b_count; k++)
-		printf("%d. stack_B: %d\n", k, stacks->stack_b[k]);
+	push_a(stacks);
+	push_b(stacks);
 }
 
 void	initialization(char **argv)
@@ -65,9 +60,10 @@ void	initialization(char **argv)
 
 	empty_argument_checker(argv);
 	stack_a_initialisation(&int_arrays, argv);
+	ft_putstr("\n");
 	stack_b_initialisation(&int_arrays);
+	ft_putstr("\n");
 	algorythm(&int_arrays);
-
 	free (int_arrays.stack_a);
 	free (int_arrays.stack_b);
 }

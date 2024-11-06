@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 19:24:11 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/05 21:26:52 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:03:23 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	swap_a(t_stacks	*stacks)
 		buffer = stacks->stack_a[0];
 		stacks->stack_a[0] = stacks->stack_a[1];
 		stacks->stack_a[1] = buffer;
+		for (int i = 0; i < stacks->stack_a_count; i++)
+			printf("%d. stack_A after: %d\n", i, stacks->stack_a[i]);
 		ft_putstr("sa\n");
 	}
 
@@ -35,6 +37,8 @@ void	swap_b(t_stacks	*stacks)
 		buffer = stacks->stack_b[0];
 		stacks->stack_b[0] = stacks->stack_b[1];
 		stacks->stack_b[1] = buffer;
+		for (int i = 0; i < stacks->stack_b_count; i++)
+			printf("%d. stack_B after: %d\n", i, stacks->stack_b[i]);
 		ft_putstr("sa\n");
 	}
 
