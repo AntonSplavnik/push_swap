@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/06 22:37:19 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:48:58 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	stack_b_initialisation(t_stacks	*int_arrays)
 	}
 	int_arrays->stack_b[0] = 1;
 	int_arrays->stack_b[1] = 2;
-	int_arrays->stack_b_count = int_arrays->stack_a_count;
+	int_arrays->stack_b_count = 2;
+
 	for (int j = 0; j < int_arrays->stack_b_count; j++)
 		printf("%d. stack_B: %d\n", j, int_arrays->stack_b[j]);
 }
@@ -51,7 +52,20 @@ void	stack_b_initialisation(t_stacks	*int_arrays)
 void	algorythm(t_stacks *stacks)
 {
 	push_a(stacks);
+	push_a(stacks);
+	push_a(stacks);
+
 	push_b(stacks);
+	push_b(stacks);
+	push_b(stacks);
+	push_b(stacks);
+	push_b(stacks);
+	push_b(stacks);
+	push_b(stacks);
+
+	push_a(stacks);
+	push_a(stacks);
+	push_a(stacks);
 }
 
 void	initialization(char **argv)
