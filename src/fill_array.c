@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:13:53 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/05 18:38:58 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:10:47 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	fill_array(char **argv, t_stacks *int_array)
 	char	**processed_argument;
 
 	i = 1;
-	k = 0;
+	k = int_array->len - 1;
 	while (argv[i])
 	{
 		processed_argument = ft_split(argv[i], ' ');
@@ -71,7 +71,7 @@ void	fill_array(char **argv, t_stacks *int_array)
 				processed_argument[j], k) == 1)
 				clenup_on_error(processed_argument, int_array);
 			j++;
-			k++;
+			k--;
 		}
 		free_processed_argument(processed_argument);
 		i++;

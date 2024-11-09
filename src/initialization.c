@@ -6,25 +6,30 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/08 21:49:58 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/09 22:39:30 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_a_initialisation(t_stacks *int_arrays, char **argv)
+void	stack_a_initialisation(t_stacks *stacks, char **argv)
 {
-	//stack_a memory allocation
-	int_arrays->stack_a_count = number_counter(argv);
-	printf("Number of elements in the input array: %d\n\n", int_arrays->stack_a_count);
-	int_arrays->stack_a = ft_calloc(int_arrays->stack_a_count \
+	stacks->len = number_counter(argv);
+	stacks->stack_a_len = stacks->len;
+
+	printf("Number of elements in the input: %d\n\n", stacks->stack_a_len);
+
+	stacks->stack_a = ft_calloc(stacks->stack_a_len \
 		, sizeof(int));
-	if (int_arrays->stack_a == NULL)
+	if (stacks->stack_a == NULL)
 		exit (1);
-	//Input restriction check and stack_a fillig
-	fill_array (argv, int_arrays);
-	for (int i = 0; i < int_arrays->stack_a_count; i++)
-		printf("%d. stack_A: %d\n", i, int_arrays->stack_a[i]);
+
+	fill_array (argv, stacks);
+
+	ft_putstr("stack_a init\n");
+	for (int i = stacks->stack_a_len; i > 0; i--)
+		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+
 	// if (duplicate_check(int_arrays->stack_a \
 	// 	, int_arrays->stack_a_count) == 1)
 	// {
@@ -33,52 +38,43 @@ void	stack_a_initialisation(t_stacks *int_arrays, char **argv)
 	// }
 }
 
-void	stack_b_initialisation(t_stacks	*int_arrays)
+void	stack_b_initialisation(t_stacks	*stacks)
 {
-	int_arrays->stack_b = malloc (int_arrays->stack_a_count * sizeof(int));
-	if (int_arrays->stack_b == NULL)
+	stacks->stack_b = malloc (stacks->len * sizeof(int));
+	if (stacks->stack_b == NULL)
 	{
-		free (int_arrays->stack_a);
+		free (stacks->stack_a);
 		exit (1);
 	}
-	// int_arrays->stack_b[0] = 1;
-	// int_arrays->stack_b[1] = 2;
-	int_arrays->stack_b_count = 0;
 
-	for (int j = 0; j < int_arrays->stack_b_count; j++)
-		printf("%d. stack_B: %d\n", j, int_arrays->stack_b[j]);
-}
+	stacks->stack_b_len = 0;
 
-void	algorythm(t_stacks *stacks)
-{
-	push_a(stacks);
-	push_a(stacks);
-	push_a(stacks);
-
-	push_b(stacks);
-	push_b(stacks);
-	push_b(stacks);
-	push_b(stacks);
-	push_b(stacks);
-	push_b(stacks);
-	push_b(stacks);
-
-	push_a(stacks);
-	push_a(stacks);
-	push_a(stacks);
+	ft_putstr("stack_b init\n");
+	for (int i = stacks->stack_b_len; i > 0; i--)
+		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
 
 void	initialization(char **argv)
 {
-	t_stacks	int_arrays;
+	t_stacks	stacks;
 
 	empty_argument_checker(argv);
-	stack_a_initialisation(&int_arrays, argv);
+	stack_a_initialisation(&stacks, argv);
 	ft_putstr("\n");
-	stack_b_initialisation(&int_arrays);
+	stack_b_initialisation(&stacks);
 	ft_putstr("\n");
-	algorythm(&int_arrays);
-	free (int_arrays.stack_a);
-	free (int_arrays.stack_b);
+	algorythm(&stacks);
+	free (stacks.stack_a);
+	free (stacks.stack_b);
 }
 
+void	algorythm(t_stacks *stacks)
+{
+	reverse_rotate_a(stacks);
+	// rotate_a(stacks);
+	// push_b(stacks);
+	// push_b(stacks);
+
+	// swap_a(stacks);
+	// swap_b(stacks);
+}

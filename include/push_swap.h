@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/06 22:36:37 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/09 22:31:11 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ typedef struct s_stacks
 {
 	int	*stack_a;
 	int	*stack_b;
-	int	stack_a_count;
-	int	stack_b_count;
+	int	len;
+	int	stack_a_len;
+	int	stack_b_len;
 }			t_stacks;
 
 // utility_functions.c
@@ -67,15 +68,18 @@ void	stack_b_initialisation(t_stacks	*int_arrays);
 void	algorythm(t_stacks *stacks);
 
 
-// sorting functions
-void	swap_a(t_stacks	*stacks);
-void	swap_b(t_stacks	*stacks);
-void	rotate_a(t_stacks *stacks);
-void	rotate_b(t_stacks *stacks);
-void	reverse_rotate_a(t_stacks *stacks);
-void	reverse_rotate_b(t_stacks *stacks);
+//sorting functions
 void	push_a(t_stacks *stacks);
 void	push_b(t_stacks *stacks);
+
+void	swap_a(t_stacks	*stacks);
+void	swap_b(t_stacks	*stacks);
+
+void	rotate_a(t_stacks *stacks);
+void	rotate_b(t_stacks *stacks);
+
+void	reverse_rotate_a(t_stacks *stacks);
+void	reverse_rotate_b(t_stacks *stacks);
 
 //main.c
 int		main(int argc, char **argv);

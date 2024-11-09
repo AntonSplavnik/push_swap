@@ -3,6 +3,7 @@
 		"stdio.h": "c",
 		"unistd.h": "c",
 		"push_swap.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"string.h": "c"
 	}
 }

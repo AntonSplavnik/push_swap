@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:56:21 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/08 21:53:11 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/09 21:26:13 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,54 @@
 
 void	push_a(t_stacks *stacks)
 {
-// Nothing to push if stack_b is empty
-	if (stacks->stack_b_count == 0)
+	if (stacks->stack_b_len == 0)
 		return ;
-// Shift stack_a up to make space for the new element at the top
-	int	i;
-	i = stacks->stack_a_count;
-	while (i > 0)
+	if (stacks->stack_a_len == 0)
 	{
-		stacks->stack_a[i] = stacks->stack_a[i - 1];
-		i--;
+		stacks->stack_a[0] = stacks->stack_b[stacks->stack_b_len - 1];
+		stacks->stack_a_len++;
+		stacks->stack_b_len--;
 	}
-// Move the top element of stack_b to stack_a
-	stacks->stack_a[0] = stacks->stack_b[0];
-	stacks->stack_a_count++;
-// Shift stack_b down to remove the element from the top
-	int	j;
-	j = 0;
-	while (j < stacks->stack_b_count - 1)
+	else
 	{
-		stacks->stack_b[j] = stacks->stack_b[j + 1];
-		j++;
+		stacks->stack_a[stacks->stack_a_len] = stacks->stack_b[stacks->stack_b_len - 1];
+		stacks->stack_a_len++;
+		stacks->stack_b_len--;
 	}
-	stacks->stack_b_count--;
 
-	printf("Stack A after push_a:\n");
-	for (int i = 0; i < stacks->stack_a_count; i++)
-		printf("%d. %d\n", i, stacks->stack_a[i]);
+	ft_putstr("\nafter push_a\n");
+	for (int i = stacks->stack_a_len; i > 0; i--)
+		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
-	printf("\nStack B after push_a:\n");
-	for (int i = 0; i < stacks->stack_b_count; i++)
-			printf("%d. %d\n", i, stacks->stack_b[i]);
-	ft_putstr("pa\n");
+	ft_putstr("\n");
+	for (int i = stacks->stack_b_len; i > 0; i--)
+		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
 
 void	push_b(t_stacks *stacks)
 {
-// Nothing to push if stack_a is empty
-	if (stacks->stack_a_count == 0)
+	if (stacks->stack_a_len == 0)
 		return ;
-// Shift stack_b up to make space for the new element at the top
-	int	i;
-
-	i = stacks->stack_b_count;
-	while (i > 0)
+	if (stacks->stack_b_len == 0)
 	{
-		stacks->stack_b[i] = stacks->stack_b[i - 1];
-		i--;
+		stacks->stack_b[0] = stacks->stack_a[stacks->stack_a_len - 1];
+		stacks->stack_b_len++;
+		stacks->stack_a_len--;
 	}
-// Move the top element of stack_a to stack_b
-	stacks->stack_b[0] = stacks->stack_a[0];
-	stacks->stack_b_count++;
-// Shift stack_a down to remove the element from the top
-	int	j;
-	j = 0;
-	while (j < stacks->stack_a_count - 1)
+	else
 	{
-		stacks->stack_a[j] = stacks->stack_a[j + 1];
-		j++;
+		stacks->stack_b[stacks->stack_b_len] = stacks->stack_a[stacks->stack_a_len - 1];
+		stacks->stack_b_len++;
+		stacks->stack_a_len--;
 	}
-	stacks->stack_a_count--;
 
-	printf("Stack A after push_b:\n");
-	for (int i = 0; i < stacks->stack_a_count; i++)
-		printf("%d. %d\n", i, stacks->stack_a[i]);
+	ft_putstr("\nafter push_b\n");
+	for (int i = stacks->stack_a_len; i > 0; i--)
+		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// printf("stack_a_len = %d\n",stacks->stack_a_len);
 
-	printf("\nStack B after push_b:\n");
-	for (int i = 0; i < stacks->stack_b_count; i++)
-		printf("%d. %d\n", i, stacks->stack_b[i]);
-	ft_putstr("pb\n");
+	ft_putstr("\n");
+	for (int i = stacks->stack_b_len; i > 0; i--)
+		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// printf("stack_b_len = %d\n",stacks->stack_b_len);
 }
