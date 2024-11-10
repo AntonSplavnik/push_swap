@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 15:05:20 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:43:43 by antonsplavn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	free_processed_argument(char **processed_argument);
 void	fill_array(char **argv, t_stacks *int_array);
 
 // initialization
-void	initialization(char **argv, t_stacks *stacks);
+void	init(char **argv, t_stacks *stacks);
 void	stack_a_initialisation(t_stacks *int_arrays, char **argv);
 void	stack_b_initialisation(t_stacks	*int_arrays);
 void	algorythm(t_stacks *stacks);

@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_check.c                                       :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 14:10:28 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 19:38:30 by antonsplavn      ###   ########.fr       */
+/*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
+/*   Updated: 2024/11/10 19:41:27 by antonsplavn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_check(t_stacks *stacks)
+void	algorythm(t_stacks *stacks)
 {
-	int	i;
-
-	i = stacks->stack_a_len - 1;
-	while (i > 0)
+	if (stacks->stack_a_len = 3)
 	{
-		if (stacks->stack_a[i] > stacks->stack_a[i - 1])
-		{
-			printf ("Unsorted\n");
-			return ;
-		}
-		i--;
+
 	}
-	printf("Sorted\n");
+	// reverse_rotate_a(stacks);
+	rotate_a(stacks);
+	// push_b(stacks);
+	// push_b(stacks);
+	// swap_a(stacks);
+	// swap_b(stacks);
 }

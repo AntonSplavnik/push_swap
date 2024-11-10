@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 15:03:06 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:43:43 by antonsplavn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	execution(char **argv, t_stacks *stacks)
+{
+	init(argv, stacks);
+	sort_check(stacks);
+	// algorythm(stacks);
+	free (stacks->stack_a);
+	free (stacks->stack_b);
+}
 
 int	main(int argc, char **argv)
 {
