@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/09 22:31:11 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/10 15:05:20 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	free_processed_argument(char **processed_argument);
 void	fill_array(char **argv, t_stacks *int_array);
 
 // initialization
-void	initialization(char **str);
+void	initialization(char **argv, t_stacks *stacks);
 void	stack_a_initialisation(t_stacks *int_arrays, char **argv);
 void	stack_b_initialisation(t_stacks	*int_arrays);
 void	algorythm(t_stacks *stacks);
@@ -80,6 +80,12 @@ void	rotate_b(t_stacks *stacks);
 
 void	reverse_rotate_a(t_stacks *stacks);
 void	reverse_rotate_b(t_stacks *stacks);
+
+//sort check
+void	sort_check(t_stacks *stacks);
+
+//execution
+void	execution(char **argv, t_stacks *stacks);
 
 //main.c
 int		main(int argc, char **argv);

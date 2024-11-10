@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 15:03:06 by asplavni         ###   ########.fr       */
+/*   Created: 2024/11/10 14:10:28 by asplavni          #+#    #+#             */
+/*   Updated: 2024/11/10 14:53:55 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort_check(t_stacks *stacks)
 {
-	t_stacks	stacks;
+	int	i;
 
-	if (argc < 2)
+	i = stacks->stack_a_len - 1;
+	while (i > 0)
 	{
-		ft_putstr("Error: Wrong number of arguments.\n"
-			"Should be more then two arguments.\n");
+		if (stacks->stack_a[i] > stacks->stack_a[i - 1])
+		{
+			printf ("Unsorted\n");
+			return ;
+		}
+		i--;
 	}
-	else
-	{
-		execution(argv, &stacks);
-	}
-	ft_putstr("\n");
-	return (0);
+	printf("Sorted\n");
 }

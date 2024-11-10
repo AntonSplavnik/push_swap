@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/09 22:39:30 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:45:18 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,34 @@ void	stack_b_initialisation(t_stacks	*stacks)
 		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
 
-void	initialization(char **argv)
+void	initialization(char **argv, t_stacks *stacks)
 {
-	t_stacks	stacks;
-
 	empty_argument_checker(argv);
-	stack_a_initialisation(&stacks, argv);
+	stack_a_initialisation(stacks, argv);
 	ft_putstr("\n");
-	stack_b_initialisation(&stacks);
+	stack_b_initialisation(stacks);
 	ft_putstr("\n");
-	algorythm(&stacks);
-	free (stacks.stack_a);
-	free (stacks.stack_b);
 }
 
 void	algorythm(t_stacks *stacks)
 {
-	reverse_rotate_a(stacks);
-	// rotate_a(stacks);
-	// push_b(stacks);
-	// push_b(stacks);
+	if (stacks->stack_a_len = 3)
+	{
 
+	}
+	// reverse_rotate_a(stacks);
+	rotate_a(stacks);
+	// push_b(stacks);
+	// push_b(stacks);
 	// swap_a(stacks);
 	// swap_b(stacks);
+}
+
+void	execution(char **argv, t_stacks *stacks)
+{
+	initialization(argv, stacks);
+	sort_check(stacks);
+	// algorythm(stacks);
+	free (stacks->stack_a);
+	free (stacks->stack_b);
 }
