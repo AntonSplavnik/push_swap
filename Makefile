@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+         #
+#    By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 20:36:45 by asplavni          #+#    #+#              #
-#    Updated: 2024/11/10 19:45:10 by antonsplavn      ###   ########.fr        #
+#    Updated: 2024/11/11 21:35:12 by asplavni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,13 @@ INC_DIR = include
 SRC = $(SRC_DIR)/fill_array.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/init.c \
       $(SRC_DIR)/main.c $(SRC_DIR)/number_counter.c $(SRC_DIR)/parsing.c \
       $(SRC_DIR)/utility_functions.c $(SRC_DIR)/swap.c $(SRC_DIR)/rotate.c \
-	  $(SRC_DIR)/reverse_rotate.c/ $(SRC_DIR)/push.c $(SRC_DIR)/sort_check.c
+	  $(SRC_DIR)/reverse_rotate.c/ $(SRC_DIR)/push.c $(SRC_DIR)/sort_check.c \
+	  $(SRC_DIR)/sorting.c
 OBJ = $(OBJ_DIR)/fill_array.o $(OBJ_DIR)/ft_split.o $(OBJ_DIR)/init.o \
       $(OBJ_DIR)/main.o $(OBJ_DIR)/number_counter.o $(OBJ_DIR)/parsing.o \
       $(OBJ_DIR)/utility_functions.o $(OBJ_DIR)/swap.o $(OBJ_DIR)/rotate.o \
-	  $(OBJ_DIR)/reverse_rotate.o $(OBJ_DIR)/push.o $(OBJ_DIR)/sort_check.o
+	  $(OBJ_DIR)/reverse_rotate.o $(OBJ_DIR)/push.o $(OBJ_DIR)/sort_check.o \
+	  $(OBJ_DIR)/sorting.o
 
 # Header file
 HEADER = $(INC_DIR)/push_swap.h

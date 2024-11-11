@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/11 17:45:10 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/11 21:57:32 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 void	execution(char **argv, t_stacks *stacks)
 {
 	init(argv, stacks);
-	sort_check(stacks);
-	// algorythm(stacks);
-	free (stacks->stack_a);
-	free (stacks->stack_b);
+	if (sort_check(stacks) == 0)
+	{
+		free (stacks->stack_a);
+		free (stacks->stack_b);
+		exit (0);
+	}
+	algorythm(stacks);
+	if (sort_check(stacks) == 0)
+	{
+		free (stacks->stack_a);
+		free (stacks->stack_b);
+		exit (0);
+	}
 }
 
 int	main(int argc, char **argv)

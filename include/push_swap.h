@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 19:43:43 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/11/11 21:40:30 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,12 @@ void	rotate_b(t_stacks *stacks);
 void	reverse_rotate_a(t_stacks *stacks);
 void	reverse_rotate_b(t_stacks *stacks);
 
+// sorting.c
+int		calc_largest(t_stacks *stacks);
+void	algorythm(t_stacks *stacks);
+
 //sort check
-void	sort_check(t_stacks *stacks);
+int		sort_check(t_stacks *stacks);
 
 //execution
 void	execution(char **argv, t_stacks *stacks);

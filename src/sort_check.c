@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sort_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:10:28 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 19:38:30 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/11/11 21:38:37 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_check(t_stacks *stacks)
+int	sort_check(t_stacks *stacks)
 {
 	int	i;
 
@@ -22,9 +22,10 @@ void	sort_check(t_stacks *stacks)
 		if (stacks->stack_a[i] > stacks->stack_a[i - 1])
 		{
 			printf ("Unsorted\n");
-			return ;
+			return (1);
 		}
 		i--;
 	}
 	printf("Sorted\n");
+	return (0);
 }
