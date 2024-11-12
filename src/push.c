@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:56:21 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 14:35:34 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:55:03 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ void	push_a(t_stacks *stacks)
 		stacks->stack_b_len--;
 	}
 
-	ft_putstr("\nafter push_a\n");
-	for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// ft_putstr("\nafter push_a\n");
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
-	ft_putstr("\n");
-	for (int i = stacks->stack_b_len; i > 0; i--)
-		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// ft_putstr("\n");
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	ft_putstr("pa\n");
 }
 
 void	push_b(t_stacks *stacks)
@@ -55,11 +56,12 @@ void	push_b(t_stacks *stacks)
 		stacks->stack_a_len--;
 	}
 
-	ft_putstr("\nafter push_b\n");
-	for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// ft_putstr("\nafter push_b\n");
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
-	ft_putstr("\n");
-	for (int i = stacks->stack_b_len; i > 0; i--)
-		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// ft_putstr("\n");
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	ft_putstr("pb\n");
 }

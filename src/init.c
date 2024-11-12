@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialization.c                                   :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/10 19:43:43 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/11/12 18:17:39 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ void	stack_b_initialisation(t_stacks	*stacks)
 	for (int i = stacks->stack_b_len; i > 0; i--)
 		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
+void	stack_presorted_init(t_stacks *stacks)
+{
+	int	i;
+
+	stacks->stack_presort = malloc(stacks->len * sizeof(int));
+	if (stacks->stack_presort == NULL)
+	{
+		free (stacks->stack_a);
+		free (stacks->stack_b);
+		exit (1);
+	}
+
+	stacks->stack_presort_len = stacks->len;
+
+	i = 0;
+	while (i < stacks->stack_presort_len)
+	{
+		stacks->stack_presort[i] = stacks->stack_a[i];
+		i++;
+	}
+
+	ft_putstr("stack_presort init\n");
+	for (int i = stacks->stack_presort_len; i > 0; i--)
+		printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
+
+}
 
 void	init(char **argv, t_stacks *stacks)
 {
@@ -60,5 +86,7 @@ void	init(char **argv, t_stacks *stacks)
 	stack_a_initialisation(stacks, argv);
 	ft_putstr("\n");
 	stack_b_initialisation(stacks);
+	ft_putstr("\n");
+	stack_presorted_init(stacks);
 	ft_putstr("\n");
 }

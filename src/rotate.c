@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:25:16 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/09 22:20:41 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:55:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ void	rotate_a(t_stacks *stacks)
 	}
 	stacks->stack_a[0] = buffer;
 
-	ft_putstr("\nafter rotate_a\n");
-	for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// ft_putstr("\nafter rotate_a\n");
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
-	ft_putstr("\n");
+	// ft_putstr("\n");
 
-	for (int i = stacks->stack_b_len; i > 0; i--)
-		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	ft_putstr("ra\n");
 }
 
 void	rotate_b(t_stacks *stacks)
@@ -54,12 +55,28 @@ void	rotate_b(t_stacks *stacks)
 	}
 	stacks->stack_b[0] = buffer;
 
-	ft_putstr("\nafter rotate_a\n");
-	for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// ft_putstr("\nafter rotate_a\n");
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
-	ft_putstr("\n");
+	// ft_putstr("\n");
 
-	for (int i = stacks->stack_b_len; i > 0; i--)
-		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	ft_putstr("rb\n");
+}
+
+void	rotate_a_b(t_stacks *stacks)
+{
+	rotate_a(stacks);
+	rotate_b(stacks);
+
+	// ft_putstr("\nafter rotate_a_b\n");
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+
+	// ft_putstr("\n");
+
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
