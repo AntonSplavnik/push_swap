@@ -6,14 +6,14 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:03:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/12 18:15:42 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:16:47 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Function to swap two elements
-void	swap(int *a, int *b)
+void	quicksort_swap(int *a, int *b)
 {
 	int	temp = *a;
 	*a = *b;
@@ -32,10 +32,10 @@ int	partition(int arr[], int low, int high)
 		if (arr[j] <= pivot)
 		{
 			i++;
-			swap(&arr[i], &arr[j]);
+			quicksort_swap(&arr[i], &arr[j]);
 		}
 	}
-	swap(&arr[i + 1], &arr[high]);
+	quicksort_swap(&arr[i + 1], &arr[high]);
 	return (i + 1);
 }
 

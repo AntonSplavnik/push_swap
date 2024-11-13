@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/12 17:11:14 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:18:17 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,28 +69,31 @@ void	stack_a_initialisation(t_stacks *int_arrays, char **argv);
 void	stack_b_initialisation(t_stacks	*int_arrays);
 void	stack_presorted_init(t_stacks *stacks);
 
-//sorting functions
+//operations
 void	push_a(t_stacks *stacks);
 void	push_b(t_stacks *stacks);
 
-void	swap_a(t_stacks	*stacks);
-void	swap_b(t_stacks	*stacks);
+void	swap(int *stack, int len);
+void	swap_a(t_stacks *stacks);
+void	swap_b(t_stacks *stacks);
 void	swap_a_b(t_stacks *stacks);
 
+void	rotate(int *stack, int len);
 void	rotate_a(t_stacks *stacks);
 void	rotate_b(t_stacks *stacks);
 void	rotate_a_b(t_stacks *stacks);
 
+void	reverse_rotate(int *stack, int len);
 void	reverse_rotate_a(t_stacks *stacks);
 void	reverse_rotate_b(t_stacks *stacks);
 void	reverse_rotate_a_b(t_stacks *stacks);
 
-// sorting.c
+//sorting.c
 int		calc_largest(t_stacks *stacks);
 void	algorythm(t_stacks *stacks);
 
 // quicksort.c
-void	swap(int *a, int *b);
+void	quicksort_swap(int *a, int *b);
 int		partition(int arr[], int low, int high);
 void	quicksort(int arr[], int low, int high);
 
