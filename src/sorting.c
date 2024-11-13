@@ -6,13 +6,13 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/13 20:32:20 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/13 22:10:53 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	cals_largest(int *stack, int len)
+int	calc_largest(int *stack, int len)
 {
 	int	buffer;
 
@@ -23,6 +23,18 @@ int	cals_largest(int *stack, int len)
 		buffer = stack[len - 3];
 	return (buffer);
 }
+
+void	sort_3(int *stack, int len)
+{
+	int	largest_num;
+
+	largest_num = calc_largest(stack,len);
+	if (stack[len - 1] == largest_num)
+		rotate(stack, len);
+	else if (stack[len - 2] == largest_num)
+		reverse_rotate(stack, len);
+}
+
 int	calc_largest(t_stacks *stacks)
 {
 	int	buffer;
