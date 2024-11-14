@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/13 19:18:17 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/14 20:57:56 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,16 @@ void	reverse_rotate_a(t_stacks *stacks);
 void	reverse_rotate_b(t_stacks *stacks);
 void	reverse_rotate_a_b(t_stacks *stacks);
 
-//sorting.c
-int		calc_largest(t_stacks *stacks);
+// sort_3.c
+int		calc_largest(int *stack, int len);
+void	sort_3(int *stack, int len);
+
+// sort.c
+int		find_min(t_stacks *stacks);
+int		find_max(t_stacks *stacks);
+
+// sorting.c
+void	sorter(t_stacks *stacks);
 void	algorythm(t_stacks *stacks);
 
 // quicksort.c

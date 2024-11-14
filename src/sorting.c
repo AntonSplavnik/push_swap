@@ -6,107 +6,39 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/13 22:10:53 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/14 19:44:08 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	calc_largest(int *stack, int len)
-{
-	int	buffer;
-
-	buffer = stack[len - 1];
-	if (buffer < stack[len - 2])
-		buffer = stack[len - 2];
-	else if (buffer < stack[len - 3])
-		buffer = stack[len - 3];
-	return (buffer);
-}
-
-void	sort_3(int *stack, int len)
-{
-	int	largest_num;
-
-	largest_num = calc_largest(stack,len);
-	if (stack[len - 1] == largest_num)
-		rotate(stack, len);
-	else if (stack[len - 2] == largest_num)
-		reverse_rotate(stack, len);
-}
-
-int	calc_largest(t_stacks *stacks)
-{
-	int	buffer;
-
-	buffer = stacks->stack_a[stacks->stack_a_len - 1];
-	if (buffer < stacks->stack_a[stacks->stack_a_len - 2])
-		buffer = stacks->stack_a[stacks->stack_a_len - 2];
-	else if (buffer < stacks->stack_a[stacks->stack_a_len - 3])
-		buffer = stacks->stack_a[stacks->stack_a_len - 3];
-
-	return (buffer);
-}
-
-void	sort_3(t_stacks *stacks)
-{
-	int	largest_num;
-
-	largest_num = calc_largest(stacks);
-	if (stacks->stack_a[stacks->stack_a_len - 1] == largest_num)
-		rotate_a(stacks);
-	else if (stacks->stack_a[stacks->stack_a_len - 2] == largest_num)
-		reverse_rotate_a(stacks);
-	if (stacks->stack_a[stacks->stack_a_len - 1] > \
-	stacks->stack_a[stacks->stack_a_len - 2])
-		swap_a(stacks);
-}
-
 void	sorter(t_stacks *stacks)
 {
-	push_b(stacks);
-
+	if (stacks->stack_a_len == 3)
+		sort_3(stacks->stack_a, stacks->stack_a_len);
+	else
+		quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
+	ft_putstr("quicksorted stack_presort\n");
+	for (int i = stacks->stack_presort_len; i > 0; i--)
+		printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
 }
 
 void	algorythm(t_stacks *stacks)
 {
-	if (stacks->stack_a_len == 3)
-		sort_3(stacks);
-	else
-		quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
-	// ft_putstr("quicksorted stack_presort\n");
-	// for (int i = stacks->stack_presort_len; i > 0; i--)
-	// 	printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
-
-	// int	i;
-	// i = 0;
-	// while (i < stacks->stack_presort_len)
-	// {
-	// 	if (stacks->stack_a[stacks->stack_a_len - 1] == stacks->stack_presort[i])
-	// 	{
-	// 		push_b(stacks);
-	// 		i++;
-	// 	}
-	// 	else
-	// 		rotate_a(stacks);
-	// }
-
-	// while (stacks->stack_b_len > 0)
-	// 	push_a(stacks);
-
-
-	// reverse_rotate_a(stacks);
+	sort_3(stacks->stack_a, stacks->stack_a_len);
+	// push_b(stacks);
+	// push_b(stacks);
+	// push_b(stacks);
+	// rotate_a(stacks);
+	// rotate_b(stacks);
 	// rotate_a(stacks);
 	// push_b(stacks);
 	// push_b(stacks);
 	// swap_a(stacks);
 	// swap_b(stacks);
-	push_b(stacks);
-	push_b(stacks);
-	rotate_a(stacks);
-	rotate_b(stacks);
 	// swap_a(stacks);
 	// swap_b(stacks);
+	// reverse_rotate_a(stacks);
 
 	ft_putstr("\nEND OF OPERATIONS\n");
 

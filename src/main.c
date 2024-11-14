@@ -6,28 +6,31 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/12 17:12:56 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:56:39 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_stacks(t_stacks *stacks)
+{
+	free (stacks->stack_a);
+	free (stacks->stack_b);
+	free (stacks->stack_presort);
+}
 
 void	execution(char **argv, t_stacks *stacks)
 {
 	init(argv, stacks);
 	if (sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
 	{
-		free (stacks->stack_a);
-		free (stacks->stack_b);
-		free (stacks->stack_presort);
+		free_stacks(stacks);
 		exit (0);
 	}
 	algorythm(stacks);
-	if (sort_check(stacks->stack_presort, stacks->stack_presort_len) == 0)
+	if (sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
 	{
-		free (stacks->stack_a);
-		free (stacks->stack_b);
-		free (stacks->stack_presort);
+		free_stacks(stacks);
 		exit (0);
 	}
 }
