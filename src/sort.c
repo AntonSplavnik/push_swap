@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/14 22:25:22 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:20:33 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,32 @@ int	find_correct_position(t_stacks *stack_b, int num)
 {
 
 }
-int	find_cheapest_number(t_stacks stacks)
+int	calculate_operation(t_stacks *stacks, int index)
 {
 
+}
+
+int	find_cheapest_number(t_stacks *stacks)
+{
+	int	min_operation;
+	int	cheapest_index;
+	int	current_operations;
+	int	i;
+
+	cheapest_index = stacks->stack_a_len - 1;
+	min_operation = calculate_operation(stacks, stacks->stack_a_len - 1);
+	i = stacks->stack_a_len - 2;
+	while (i >= 0)
+	{
+		current_operations = calculate_operation(stacks, i);
+		if (current_operations < min_operation)
+		{
+			min_operation = current_operations;
+			cheapest_index = i;
+		}
+		i--;
+	}
+	return (cheapest_index);
 }
 
 void	sort_a(t_stacks *stacks)
