@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/14 19:44:08 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/16 19:51:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	sorter(t_stacks *stacks)
 
 void	algorythm(t_stacks *stacks)
 {
-	sort_3(stacks->stack_a, stacks->stack_a_len);
+
+	sort_a(stacks);
+	// sort_3(stacks->stack_a, stacks->stack_a_len);
 	// push_b(stacks);
 	// push_b(stacks);
 	// push_b(stacks);
@@ -52,6 +54,4 @@ void	algorythm(t_stacks *stacks)
 	// ft_putstr("\n");
 	// for (int i = stacks->stack_presort_len; i > 0; i--)
 	// 	printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
-
-
 }
