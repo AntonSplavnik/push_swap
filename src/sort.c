@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/17 00:47:20 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/17 18:05:02 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,56 @@ int	find_max(t_stacks *stacks)
 	return (max);
 }
 
+// int	find_correct_position(t_stacks *stacks, int num)
+// {
+// 	int	i;
+// 	int	max;
+// 	int	min;
+
+// 	if (stacks->stack_b_len == 0)
+// 		return (0);
+// 	max = find_max(stacks);
+// 	min = find_min(stacks);
+// 	i = stacks->stack_b_len - 1;
+// 	if (num > max || num < min)
+// 	{
+// 		while (i >= 0)
+// 		{
+// 			if (stacks->stack_b[i] == max)
+// 				return (i);
+// 			i--;
+// 		}
+// 		return (stacks->stack_b_len - 1);
+// 	}
+// 	i = stacks->stack_b_len - 1;
+// 	while (i > 0)
+// 	{
+// 		if (stacks->stack_b[i] > num && stacks->stack_b[i - 1] < num)
+// 			return (i);
+// 		i --;
+// 	}
+// 	return (0);
+// }
 int	find_correct_position(t_stacks *stacks, int num)
 {
-	int	i;
 	int	max;
 	int	min;
+	int	i;
 
-	if (stacks->stack_b_len == 0)
-		return (0);
 	max = find_max(stacks);
 	min = find_min(stacks);
-	i = stacks->stack_b_len - 1;
-	if (num > max || num < min)
+	if (stacks->stack_b_len == 0 || num > max || num < min)
 	{
+		i = stacks->stack_b_len - 1;
 		while (i >= 0)
 		{
 			if (stacks->stack_b[i] == max)
-				return (i);
+			{
+				if (i == stacks->stack_b_len - 1)
+					return (0);
+				else
+					return (i + 1);
+			}
 			i--;
 		}
 		return (stacks->stack_b_len - 1);
@@ -73,9 +106,11 @@ int	find_correct_position(t_stacks *stacks, int num)
 	{
 		if (stacks->stack_b[i] > num && stacks->stack_b[i - 1] < num)
 			return (i);
-		i --;
+		i--;
 	}
-	return (0);
+	if (num < stacks->stack_b[0] && num > stacks->stack_b[stacks->stack_b_len - 1])
+		return (0);
+	return (stacks->stack_b_len - 1);
 }
 
 int	calculate_operation(t_stacks *stacks, int index)
@@ -87,13 +122,24 @@ int	calculate_operation(t_stacks *stacks, int index)
 
 	num = stacks->stack_a[index];
 	pos_b = find_correct_position(stacks, num);
-	operations_a = index;
-	operations_b = stacks->stack_b_len - pos_b;
-
-	if (operations_a > operations_b)
-		return (operations_a);
+	if (index <= stacks->stack_a_len / 2)
+		operations_b = index;
 	else
-		return (operations_b);
+		operations_a = stacks->stack_a_len - index;
+	if (pos_b <= stacks->stack_b_len / 2)
+		operations_b = pos_b;
+	else
+		operations_b = stacks->stack_b_len - pos_b;
+
+	if ((index <= stacks->stack_a_len / 2 && pos_b <= stacks->stack_b_len / 2) \
+		|| (index > stacks->stack_a_len / 2 && pos_b > stacks->stack_b_len / 2))
+	{
+		if (operations_a > operations_b)
+			return (operations_a);
+		else
+			return (operations_b);
+	}
+	return (operations_a + operations_b);
 }
 
 int	find_cheapest_number(t_stacks *stacks)
@@ -119,7 +165,6 @@ int	find_cheapest_number(t_stacks *stacks)
 	return (cheapest_index);
 }
 
-
 void	push_cheapest(t_stacks *stacks, int index)
 {
 	int	num = stacks->stack_a[index];
@@ -141,7 +186,6 @@ void	push_cheapest(t_stacks *stacks, int index)
 			index++;
 		}
 	}
-
 	if (pos_b <= stacks->stack_b_len / 2)
 	{
 		while (pos_b > 0)
@@ -149,7 +193,6 @@ void	push_cheapest(t_stacks *stacks, int index)
 			rotate_b(stacks);
 			pos_b--;
 		}
-
 	}
 	else
 	{
@@ -209,8 +252,13 @@ void	sort_a(t_stacks *stacks)
 {
 	int	cheapest_index;
 
-	push_b(stacks);
-	push_b(stacks);
+	if (stacks->stack_a_len > 5)
+	{
+		push_b(stacks);
+		push_b(stacks);
+	}
+	else
+		push_b(stacks);
 
 	while (stacks->stack_a_len > 3)
 	{
