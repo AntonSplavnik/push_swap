@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/18 14:27:22 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:53:12 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,23 @@ int		calc_largest(int *stack, int len);
 void	sort_3(int *stack, int len);
 
 // sort.c
+// int		find_min(t_stacks *stacks);
+// int		find_max(t_stacks *stacks);
+// int		calculate_operations_b(t_stacks *stacks, int num);
+// int		find_correct_position(t_stacks *stacks, int num);
+// int		calculate_operation(t_stacks *stacks, int index);
+// int		find_cheapest_number(t_stacks *stacks);
+// void	push_cheapest(t_stacks *stacks, int index);
+// void	sort_a(t_stacks *stacks);
+
+// sort_test.c
 int		find_min(t_stacks *stacks);
 int		find_max(t_stacks *stacks);
-int		calculate_operations_b(t_stacks *stacks, int num);
 int		find_correct_position(t_stacks *stacks, int num);
-int		calculate_operation(t_stacks *stacks, int index);
+int		calculate_operations_b(t_stacks *stacks, int num);
+int		calculate_stack_operations(int stack_size, int index);
+int		compare_operations(t_stacks *stacks, int operations_a, int operations_b, int index_a, int pos_in_b);
+int		calculate_operations(t_stacks *stacks, int index_a);
 int		find_cheapest_number(t_stacks *stacks);
 void	push_cheapest(t_stacks *stacks, int index);
 void	sort_a(t_stacks *stacks);
