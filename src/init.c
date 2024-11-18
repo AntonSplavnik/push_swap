@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/12 18:17:39 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:09:30 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	stack_presorted_init(t_stacks *stacks)
 		i++;
 	}
 
-	ft_putstr("stack_presort init\n");
-	for (int i = stacks->stack_presort_len; i > 0; i--)
-		printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
+	// ft_putstr("stack_presort init\n");
+	// for (int i = stacks->stack_presort_len; i > 0; i--)
+	// 	printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
 
 }
 
