@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/18 21:53:12 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:51:26 by antonsplavn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ int		calculate_operations(t_stacks *stacks, int index_a);
 int		find_cheapest_number(t_stacks *stacks);
 void	push_cheapest(t_stacks *stacks, int index);
 void	sort_a(t_stacks *stacks);
+
+// move_to_pos.c
+void move_to_correct_position(t_stacks *stacks);
 
 // sorting.c
 void	sorter(t_stacks *stacks);

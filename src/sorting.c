@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/18 21:53:01 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:50:43 by antonsplavn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,29 @@
 
 void	sorter(t_stacks *stacks)
 {
-	if (stacks->stack_a_len == 3)
-		sort_3(stacks->stack_a, stacks->stack_a_len);
-	else
-		quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
+	// if (stacks->stack_a_len == 3)
+	// 	sort_3(stacks->stack_a, stacks->stack_a_len);
+	// else
+	quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
 	ft_putstr("quicksorted stack_presort\n");
 	for (int i = stacks->stack_presort_len; i > 0; i--)
 		printf("%d. stack_presort: %d\n", i - 1, stacks->stack_presort[i - 1]);
+	move_to_correct_position(stacks);
 }
 
 void	algorythm(t_stacks *stacks)
 {
-	sort_a(stacks);
+	// sort_a(stacks);
 	// sort_3(stacks->stack_a, stacks->stack_a_len);
-	// push_b(stacks);
-	// push_b(stacks);
-	// push_b(stacks);
-	// rotate_a(stacks);
-	// rotate_b(stacks);
-	// rotate_a(stacks);
-	// push_b(stacks);
-	// push_b(stacks);
-	// swap_a(stacks);
-	// swap_b(stacks);
-	// swap_a(stacks);
-	// swap_b(stacks);
-	// reverse_rotate_a(stacks);
 
-	ft_putstr("\nEND OF OPERATIONS\n");
+	sorter(stacks);
 
-	for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
-
-	ft_putstr("\n");
-	for (int i = stacks->stack_b_len; i > 0; i--)
-		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// ft_putstr("\nEND OF OPERATIONS\n");
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// ft_putstr("\n");
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 
 	// ft_putstr("\n");
 	// for (int i = stacks->stack_presort_len; i > 0; i--)
