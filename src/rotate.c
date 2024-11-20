@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:21:26 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/19 16:42:19 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/11/20 20:45:32 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	rotate_a(t_stacks *stacks)
 		return ;
 	rotate(stacks->stack_a, stacks->stack_a_len);
 	ft_putstr("ra\n");
+
+	ft_putstr("after rotate_a\n");
+	for (int i = stacks->stack_a_len; i > 0; i--)
+		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 }
 
 void	rotate_b(t_stacks *stacks)
@@ -46,9 +50,9 @@ void	rotate_b(t_stacks *stacks)
 	rotate(stacks->stack_b, stacks->stack_b_len);
 	ft_putstr("rb\n");
 
-	// ft_putstr("after rotate_b\n");
-	// for (int i = stacks->stack_b_len; i > 0; i--)
-	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	ft_putstr("after rotate_b\n");
+	for (int i = stacks->stack_b_len; i > 0; i--)
+		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
 
 void	rotate_a_b(t_stacks *stacks)

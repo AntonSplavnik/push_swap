@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/19 16:50:43 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/11/20 20:42:58 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sorter(t_stacks *stacks)
 {
-	// if (stacks->stack_a_len == 3)
-	// 	sort_3(stacks->stack_a, stacks->stack_a_len);
-	// else
+	if (stacks->stack_a_len == 3)
+		sort_3(stacks->stack_a, stacks->stack_a_len);
+	else
 	quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
 	ft_putstr("quicksorted stack_presort\n");
 	for (int i = stacks->stack_presort_len; i > 0; i--)
@@ -26,10 +26,10 @@ void	sorter(t_stacks *stacks)
 
 void	algorythm(t_stacks *stacks)
 {
-	// sort_a(stacks);
+	sort_a(stacks);
 	// sort_3(stacks->stack_a, stacks->stack_a_len);
 
-	sorter(stacks);
+	// sorter(stacks);
 
 	// ft_putstr("\nEND OF OPERATIONS\n");
 	// for (int i = stacks->stack_a_len; i > 0; i--)

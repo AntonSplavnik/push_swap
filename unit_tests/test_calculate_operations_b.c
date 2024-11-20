@@ -46,7 +46,8 @@ int	find_max(t_stacks *stacks)
 }
 
 // Your function
-int calculate_operations_b(t_stacks *stacks, int num) {
+int calculate_operations_b(t_stacks *stacks, int num)
+{
     int max = find_max(stacks);
     int min = find_min(stacks);
     int i;
@@ -54,8 +55,10 @@ int calculate_operations_b(t_stacks *stacks, int num) {
     if (stacks->stack_b_len == 0 || num > max || num < min)
     {
         i = stacks->stack_b_len - 1;
-        while (i >= 0) {
-            if (stacks->stack_b[i] == max) {
+        while (i >= 0)
+        {
+            if (stacks->stack_b[i] == max)
+            {
                 if (i == stacks->stack_b_len - 1)
                     return (0);
                 else
@@ -87,9 +90,9 @@ int main() {
     stacks.stack_b_len = 3;
 
     printf("Test 1: Expected 0, Got %d\n", calculate_operations_b(&stacks, 25)); // num > max
-    printf("Test 2: Expected 1, Got %d\n", calculate_operations_b(&stacks, 5));  // num < min
-    printf("Test 3: Expected , Got %d\n", calculate_operations_b(&stacks, 12)); // num between
-    printf("Test 4: Expected 1, Got %d\n", calculate_operations_b(&stacks, 8));  // num fits start
+    printf("Test 2: Expected 0, Got %d\n", calculate_operations_b(&stacks, 5));  // num < min
+    printf("Test 3: Expected 1, Got %d\n", calculate_operations_b(&stacks, 12)); // num between
+    printf("Test 4: Expected 0, Got %d\n", calculate_operations_b(&stacks, 8));  // num fits start
     printf("Test 5: Expected 0, Got %d\n", calculate_operations_b(&stacks, 22)); // num fits end
 
     // Test case 2: Empty stack

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antonsplavnik <antonsplavnik@student.42    +#+  +:+       +#+        */
+/*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/19 16:54:16 by antonsplavn      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:02:11 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	stack_a_initialisation(t_stacks *stacks, char **argv)
 
 	fill_array (argv, stacks);
 
-	// ft_putstr("stack_a init\n");
-	// for (int i = stacks->stack_a_len; i > 0; i--)
-	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	ft_putstr("stack_a init\n");
+	for (int i = stacks->stack_a_len; i > 0; i--)
+		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
 	if (duplicate_check(stacks->stack_a \
 		, stacks->stack_a_len) == 1)
@@ -49,9 +49,9 @@ void	stack_b_initialisation(t_stacks	*stacks)
 
 	stacks->stack_b_len = 0;
 
-	// ft_putstr("stack_b init\n");
-	// for (int i = stacks->stack_b_len; i > 0; i--)
-	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	ft_putstr("stack_b init\n");
+	for (int i = stacks->stack_b_len; i > 0; i--)
+		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 }
 void	stack_presorted_init(t_stacks *stacks)
 {
