@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/21 00:22:37 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/21 01:08:05 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ int	calculate_operations_b(t_stacks *stacks, int num)
 	i = stacks->stack_b_len - 1;
 	while (i > 0)
 	{
-		printf("im here! i = %d\n", i);
+		// printf("im here! i = %d\n", i);
 		if (stacks->stack_b[i] > num && stacks->stack_b[i - 1] < num)
 			return (stacks->stack_b_len - i);
 		i--;
-		printf("im here! i = %d\n", i);
+		// printf("im here! i = %d\n", i);
 	}
 	if (num < stacks->stack_b[0] && num > stacks->stack_b[stacks->stack_b_len - 1])
 		return (0);
@@ -291,23 +291,29 @@ void	push_cheapest(t_stacks *stacks, int index)
 			index++;
 		}
 	}
+
+	int	i = stacks->stack_b_len - 1;
 	if (pos_b == stacks->stack_b_len -1)
 	{
+		// printf("here 0\n");
 		push_b(stacks);
 		return ;
 	}
-	else if (pos_b <= stacks->stack_b_len / 2)
+	else if (pos_b >= stacks->stack_b_len / 2)
 	{
-		while (pos_b >= stacks->stack_b_len - 1)
+		while (pos_b != i)
 		{
+			printf("here 1\n");
 			rotate_b(stacks);
-			pos_b--;
+			// pos_b--;
+			i--;
 		}
 	}
 	else
 	{
 		while (pos_b < stacks->stack_b_len - 1)
 		{
+			printf("here 2\n");
 			reverse_rotate_b(stacks);
 			pos_b++;
 		}
@@ -401,6 +407,9 @@ void	sort_a(t_stacks *stacks)
 		// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 		// ft_putstr("\n");
 	}
+
+	reverse_rotate_b(stacks);
+	reverse_rotate_b(stacks);
 
 	// sort_3(stacks->stack_a, stacks->stack_a_len);
 
