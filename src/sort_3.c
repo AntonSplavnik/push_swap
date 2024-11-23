@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:43:04 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/14 19:45:16 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:47:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ void	sort_3(int *stack, int len)
 
 	if (len != 3)
 		return ;
+
 	largest_num = calc_largest(stack, len);
 	if (stack[len - 1] == largest_num)
 		rotate(stack, len);
+
 	else if (stack[len - 2] == largest_num)
 		reverse_rotate(stack, len);
+
 	if (stack[len - 1] > stack[len - 2])
 		swap(stack, len);
 }

@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:10:28 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/14 17:57:44 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/23 19:07:23 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	sort_check(int *input, int len)
 	{
 		if (input[i] > input[i - 1])
 		{
-			printf ("Unsorted\n");
+			// printf ("Unsorted\n");
 			return (1);
 		}
 		i--;
 	}
-	printf("Sorted\n");
+	// printf("Sorted\n");
 	return (0);
 }
 
