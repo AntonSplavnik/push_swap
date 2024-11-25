@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/25 04:10:19 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:59:02 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	sorter(t_stacks *stacks)
 
 void	algorythm(t_stacks *stacks)
 {
-	sort_a(stacks);
+	quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
+	sort(stacks);
 
 	// ft_putstr("\nEND OF OPERATIONS\n");
 

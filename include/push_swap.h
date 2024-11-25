@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 01:16:57 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:41:49 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,13 @@ void	reverse_rotate_b(t_stacks *stacks);
 void	reverse_rotate_a_b(t_stacks *stacks);
 
 // sort_3.c
-int		calc_largest(int *stack, int len);
+int		sort_3_calc_largest(int *stack, int len);
 void	sort_3(int *stack, int len);
+
+//	sort.5.c
+int		calc_smallest(int *stack, int len);
+int		calc_largest(int *stack, int len);
+void	sort_5(t_stacks *stacks, int *stack, int len);
 
 // sort.c
 // int		find_min(t_stacks *stacks);
@@ -102,16 +107,19 @@ void	sort_3(int *stack, int len);
 // void	push_cheapest(t_stacks *stacks, int index);
 // void	sort_a(t_stacks *stacks);
 
-// sort_test.c
+// sort.c
 int		find_min(t_stacks *stacks);
 int		find_max(t_stacks *stacks);
+int		min_index(int *stack, int len);
+int		max_index(int *stack, int len);
+int		find_correct_pos_in_a(t_stacks *stacks);
 int		find_correct_position_in_b(t_stacks *stacks, int num);
 int		calculate_stack_operations(int stack_size, int index);
 int		compare_operations(t_stacks *stacks, int operations_a, int operations_b, int index_a, int pos_in_b);
 int		calculate_operations(t_stacks *stacks, int index_a);
 int		find_cheapest_in_a(t_stacks *stacks);
 void	push_cheapest_to_b(t_stacks *stacks, int index);
-void	sort_a(t_stacks *stacks);
+void	sort(t_stacks *stacks);
 
 // move_to_pos.c
 void move_to_correct_position(t_stacks *stacks);
@@ -128,6 +136,7 @@ void	quicksort(int arr[], int low, int high);
 //sort check
 // int		sort_check(t_stacks *stacks);
 int		sort_check(int *input, int len);
+int		sort_compare(t_stacks *stacks);
 
 //execution
 void	execution(char **argv, t_stacks *stacks);

@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:03:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/13 19:16:47 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:23:50 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	partition(int arr[], int low, int high)
 	for (int j = low; j <= high - 1; j++)
 	{
 		// If the current element is smaller than or equal to the pivot
-		if (arr[j] <= pivot)
+		if (arr[j] >= pivot)
 		{
 			i++;
 			quicksort_swap(&arr[i], &arr[j]);

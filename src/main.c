@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/14 16:56:39 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:21:48 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ void	execution(char **argv, t_stacks *stacks)
 		exit (0);
 	}
 	algorythm(stacks);
-	if (sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
-	{
-		free_stacks(stacks);
-		exit (0);
-	}
+	sort_compare(stacks);
+	free_stacks(stacks);
+	exit (0);
+	// if (sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
+	// {
+	// 	free_stacks(stacks);
+	// 	exit (0);
+	// }
 }
 
 int	main(int argc, char **argv)

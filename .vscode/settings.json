@@ -5,6 +5,9 @@
 		"push_swap.h": "c",
 		"stdlib.h": "c",
 		"string.h": "c",
-		"limits": "c"
+		"limits": "c",
+		"chrono": "c",
+		"random": "c",
+		"algorithm": "c"
 	}
 }
