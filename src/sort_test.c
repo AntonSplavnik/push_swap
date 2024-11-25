@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 03:44:55 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:13:38 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,93 +287,6 @@ void	push_cheapest_to_b(t_stacks *stacks, int index)
 	push_b(stacks);
 }
 
-int	find_correct_pos_in_a(t_stacks *stacks)
-{
-	int	num = stacks->stack_b[stacks->stack_b_len - 1];
-	int	target_pos;
-	int	next_pos;
-	int	i;
-
-	target_pos = -1;
-	i = stacks->stack_a_len - 1;
-
-	while (i >= 0)
-	{
-		next_pos = (i - 1 + stacks->stack_a_len) % stacks->stack_a_len;
-
-		printf("next_pos: %d\n", next_pos);
-
-
-		if(stacks->stack_a[i] < num && stacks->stack_a[next_pos] > num)
-		{
-			target_pos = next_pos;
-			printf("target_pos mid: %d\n", target_pos);
-			break ;
-		}
-		i--;
-	}
-
-	i = stacks->stack_a_len - 1;
-	if (target_pos == -1)
-	{
-		while (i >= 0)
-		{
-			if (stacks->stack_a[i] > num)
-			{
-				target_pos = i;
-				printf("target_pos top: %d\n", target_pos);
-				break ;
-			}
-			i--;
-		}
-	}
-	if (target_pos == -1)
-		target_pos = stacks->stack_a_len - 1;
-	printf("target_pos bot: %d\n", target_pos);
-
-	return (target_pos);
-}
-
-void	push_back_to_a(t_stacks *stacks)
-{
-	int	target_pos;
-
-	while (stacks->stack_b_len > 0)
-	{
-		for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
-
-		ft_putstr("\n");
-
-		for (int i = stacks->stack_b_len; i > 0; i--)
-			printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
-		ft_putstr("\n");
-
-		target_pos = find_correct_pos_in_a(stacks);
-
-		printf("target_pos: %d\n", target_pos);
-		ft_putstr("\n");
-
-		if (target_pos >= stacks->stack_a_len / 2)
-		{
-			while (target_pos != stacks->stack_a_len - 1)
-			{
-				rotate_a(stacks);
-				target_pos = (target_pos + 1) % stacks->stack_a_len;
-			}
-		}
-		else
-		{
-			while (target_pos != stacks->stack_a_len - 1)
-			{
-				reverse_rotate_a(stacks);
-				target_pos = (target_pos - 1 + stacks->stack_a_len) % stacks->stack_a_len;
-			}
-		}
-		// printf("b_len: %d\n", stacks->stack_b_len);
-		push_a(stacks);
-	}
-}
 int	min_index(int *stack, int len)
 {
 	int	min_index;
@@ -406,6 +319,85 @@ int	max_index(int *stack, int len)
 	return (min_index);
 }
 
+int	find_correct_pos_in_a(t_stacks *stacks)
+{
+	int	num = stacks->stack_b[stacks->stack_b_len - 1];
+	int	target_pos;
+	int	next_pos;
+	int	i;
+
+	target_pos = -1;
+	i = stacks->stack_a_len - 1;
+
+	while (i >= 0)
+	{
+		next_pos = (i - 1 + stacks->stack_a_len) % stacks->stack_a_len;
+
+		if(stacks->stack_a[i] < num && stacks->stack_a[next_pos] > num)
+		{
+			target_pos = next_pos;
+			break ;
+		}
+		i--;
+	}
+
+	int min_index_a = min_index(stacks->stack_a, stacks->stack_a_len);
+	if (num < stacks->stack_a[min_index_a])
+		target_pos = min_index_a;
+	// i = stacks->stack_a_len - 1;
+	// if (target_pos == -1)
+	// {
+	// 	while (i >= 0)
+	// 	{
+	// 		if (stacks->stack_a[i] > num)
+	// 		{
+	// 			target_pos = i;
+	// 			printf("target_pos top: %d\n", target_pos);
+	// 			break ;
+	// 		}
+	// 		i--;
+	// 	}
+	// }
+
+	if (target_pos == -1)
+	{
+		target_pos = stacks->stack_a_len - 1;
+	}
+
+	return (target_pos);
+}
+
+void	push_back_to_a(t_stacks *stacks)
+{
+	int	target_pos;
+
+	while (stacks->stack_b_len > 0)
+	{
+
+		target_pos = find_correct_pos_in_a(stacks);
+
+		if (target_pos >= stacks->stack_a_len / 2)
+		{
+			while (target_pos != stacks->stack_a_len - 1)
+			{
+				rotate_a(stacks);
+				target_pos = (target_pos + 1) % stacks->stack_a_len;
+			}
+		}
+		else
+		{
+			while (target_pos != stacks->stack_a_len - 1)
+			{
+				reverse_rotate_a(stacks);
+				target_pos = (target_pos - 1 + stacks->stack_a_len) % stacks->stack_a_len;
+			}
+		}
+		// printf("b_len: %d\n", stacks->stack_b_len);
+		push_a(stacks);
+	}
+}
+
+
 void	sort_a(t_stacks *stacks)
 {
 	int	cheapest_index;
@@ -424,62 +416,62 @@ void	sort_a(t_stacks *stacks)
 		push_cheapest_to_b(stacks, cheapest_index);
 	}
 
-	int	max_index_b = max_index(stacks->stack_b, stacks->stack_b_len);
+	// int	max_index_b = max_index(stacks->stack_b, stacks->stack_b_len);
 
-	if (max_index_b >= stacks->stack_b_len / 2)
-	{
-		while (max_index_b != stacks->stack_b_len - 1)
-		{
-			rotate_b(stacks);
-			max_index_b = (max_index_b + 1) % stacks->stack_b_len;
-		}
-	}
-	else
-		while (max_index_b != stacks->stack_b_len - 1)
-		{
-			reverse_rotate_b(stacks);
-			max_index_b = (max_index_b - 1 + stacks->stack_b_len) % stacks->stack_b_len;
-		}
+	// if (max_index_b >= stacks->stack_b_len / 2)
+	// {
+	// 	while (max_index_b != stacks->stack_b_len - 1)
+	// 	{
+	// 		rotate_b(stacks);
+	// 		max_index_b = (max_index_b + 1) % stacks->stack_b_len;
+	// 	}
+	// }
+	// else
+	// 	while (max_index_b != stacks->stack_b_len - 1)
+	// 	{
+	// 		reverse_rotate_b(stacks);
+	// 		max_index_b = (max_index_b - 1 + stacks->stack_b_len) % stacks->stack_b_len;
+	// 	}
 
 	sort_3(stacks->stack_a, stacks->stack_a_len);
 
 
 	push_back_to_a(stacks);
 
-	// int	min;
+	int	min;
 
-	// min = stacks->stack_a[stacks->stack_a_len - 1];
-	// int	i = stacks->stack_a_len - 2;
-	// // printf("%d. min before: %d. stack_b_len: %d\n", i, min, stacks->stack_b_len);
-	// while (i >= 0)
-	// {
-	// 	// printf("%d. min before: %d\n", i, min);
-	// 	if (stacks->stack_a[i] < min)
-	// 	{
-	// 		min = stacks->stack_a[i];
-	// 		// printf("%d. min after: %d\n", i, min);
-	// 	}
-	// 	i--;
-	// }
+	min = stacks->stack_a[stacks->stack_a_len - 1];
+	int	i = stacks->stack_a_len - 2;
+	// printf("%d. min before: %d. stack_b_len: %d\n", i, min, stacks->stack_b_len);
+	while (i >= 0)
+	{
+		// printf("%d. min before: %d\n", i, min);
+		if (stacks->stack_a[i] < min)
+		{
+			min = stacks->stack_a[i];
+			// printf("%d. min after: %d\n", i, min);
+		}
+		i--;
+	}
 
-	// i = 0;
+	i = 0;
 
-	// while (i <= stacks->stack_a_len - 1)
-	// {
-	// 	if (stacks->stack_a[i] == min)
-	// 		break ;
-	// 	i++;
-	// }
+	while (i <= stacks->stack_a_len - 1)
+	{
+		if (stacks->stack_a[i] == min)
+			break ;
+		i++;
+	}
 
-	// if (i >= stacks->stack_a_len / 2)
-	// {
-	// 	while (min != stacks->stack_a[stacks->stack_a_len - 1])
-	// 		rotate_a(stacks);
-	// }
+	if (i >= stacks->stack_a_len / 2)
+	{
+		while (min != stacks->stack_a[stacks->stack_a_len - 1])
+			rotate_a(stacks);
+	}
 
-	// else
-	// 	while (min != stacks->stack_a[stacks->stack_a_len - 1])
-	// 		reverse_rotate_a(stacks);
+	else
+		while (min != stacks->stack_a[stacks->stack_a_len - 1])
+			reverse_rotate_a(stacks);
 
 }
 

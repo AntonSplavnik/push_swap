@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/24 22:59:24 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:10:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	algorythm(t_stacks *stacks)
 {
 	sort_a(stacks);
 
-	ft_putstr("\nEND OF OPERATIONS\n");
+	// ft_putstr("\nEND OF OPERATIONS\n");
 
-	for (int i = stacks->stack_a_len; i > 0; i--)
-		printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
 
-	ft_putstr("\n");
+	// ft_putstr("\n");
 
-	for (int i = stacks->stack_b_len; i > 0; i--)
-		printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 
 	// ft_putstr("\n");
 	// for (int i = stacks->stack_presort_len; i > 0; i--)
