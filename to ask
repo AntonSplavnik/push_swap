@@ -29,4 +29,4 @@ int	find_correct_position(t_stacks *stacks, int num)
 	return (0);
 }
 
-explain the function
+changes made to a different branch
