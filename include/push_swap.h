@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 20:41:49 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:10:18 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,14 @@ void	quicksort(int arr[], int low, int high);
 // int		sort_check(t_stacks *stacks);
 int		sort_check(int *input, int len);
 int		sort_compare(t_stacks *stacks);
+
+// avarade_presort.c
+int		ft_abs(int num);
+int		sum(int *stack, int len);
+int		find_index(int	*stack, int len, int num);
+int		find_closes_num(int	*stack, int len, int averadge);
+int		find_index_to_push(int *stack, int len, int avrg);
+void	push_average_to_b(t_stacks *stacks);
 
 //execution
 void	execution(char **argv, t_stacks *stacks);

@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:10:28 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 21:05:19 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:45:11 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	sort_compare(t_stacks *stacks)
 		}
 		i--;
 	}
-	printf("Sorted");
+	printf("Sorted\n");
 	return (0);
 }
 // int	sort_check(t_stacks *stacks)

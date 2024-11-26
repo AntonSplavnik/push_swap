@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 22:39:56 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:33:57 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -420,7 +420,7 @@ void	push_back_to_a(t_stacks *stacks)
 
 void	sort(t_stacks *stacks)
 {
-	int	cheapest_index;
+	// int	cheapest_index;
 
 	if (stacks->stack_a_len == 4)
 		push_b(stacks);
@@ -430,35 +430,37 @@ void	sort(t_stacks *stacks)
 		push_b(stacks);
 	}
 
-	while (stacks->stack_a_len > 5)
-	{
-		cheapest_index = find_cheapest_in_a(stacks);
-		push_cheapest_to_b(stacks, cheapest_index);
-	}
+	// while (stacks->stack_a_len > 5)
+	// {
+	// 	cheapest_index = find_cheapest_in_a(stacks);
+	// 	push_cheapest_to_b(stacks, cheapest_index);
+	// }
 
-	int	max_index_b = max_index(stacks->stack_b, stacks->stack_b_len);
+	// int	max_index_b = max_index(stacks->stack_b, stacks->stack_b_len);
 
-	if (max_index_b >= stacks->stack_b_len / 2)
-	{
-		while (max_index_b != stacks->stack_b_len - 1)
-		{
-			rotate_b(stacks);
-			max_index_b = (max_index_b + 1) % stacks->stack_b_len;
-		}
-	}
-	else
-	{
-		while (max_index_b != stacks->stack_b_len - 1)
-		{
-			reverse_rotate_b(stacks);
-			max_index_b = (max_index_b - 1 + stacks->stack_b_len) % stacks->stack_b_len;
-		}
-	}
+	// if (max_index_b >= stacks->stack_b_len / 2)
+	// {
+	// 	while (max_index_b != stacks->stack_b_len - 1)
+	// 	{
+	// 		rotate_b(stacks);
+	// 		max_index_b = (max_index_b + 1) % stacks->stack_b_len;
+	// 	}
+	// }
+	// else
+	// {
+	// 	while (max_index_b != stacks->stack_b_len - 1)
+	// 	{
+	// 		reverse_rotate_b(stacks);
+	// 		max_index_b = (max_index_b - 1 + stacks->stack_b_len) % stacks->stack_b_len;
+	// 	}
+	// }
 
-	sort_5(stacks, stacks->stack_a, stacks->stack_a_len);
+	// sort_5(stacks, stacks->stack_a, stacks->stack_a_len);
 
-	// sort_3(stacks->stack_a, stacks->stack_a_len);
 
+	push_average_to_b(stacks);
+
+	sort_3(stacks->stack_a, stacks->stack_a_len);
 
 	push_back_to_a(stacks);
 
@@ -482,7 +484,6 @@ void	sort(t_stacks *stacks)
 			}
 		}
 	}
-
 
 	// sort_3(stacks->stack_a, stacks->stack_a_len);
 

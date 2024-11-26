@@ -30,3 +30,43 @@ int	find_correct_position(t_stacks *stacks, int num)
 }
 
 explain the function
+
+
+int ft_abs(int num)
+{
+	if (num < 0)
+		return (num * -1);
+	else
+		return (num);
+}
+
+
+int	find_index(int	*stack, int len, int averadge)
+{
+	int	i;
+
+	i = len - 1;
+	while(i >= 0)
+	{
+		if (stack[i] == averadge)
+			return (i);
+		i--;
+	}
+	return (-1);
+}
+
+int	find_index(int	*stack, int len, int averadge)
+{
+	int	closest_number = stack[len - 1];
+	int	closest_diff = abs(closest_number - averadge);
+
+	int i = len - 2;
+	while (i >= 0)
+	{
+		int	diff = abs(stack[i] - averadge);
+		if (diff < closest_diff)
+			closest_diff = diff;
+		i--;
+	}
+
+}

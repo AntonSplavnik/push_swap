@@ -8,6 +8,7 @@
 		"limits": "c",
 		"chrono": "c",
 		"random": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"ratio": "c"
 	}
 }
