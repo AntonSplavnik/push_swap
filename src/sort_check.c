@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:10:28 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 19:15:20 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/25 21:05:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	sort_compare(t_stacks *stacks)
 	{
 		if (stacks->stack_a[i] != stacks->stack_presort[i])
 		{
-			// printf("Unsorted --> stack_A: %d stack_presort: %d\n", stacks->stack_a[i], stacks->stack_presort[i]);
+			printf("Unsorted --> stack_A: %d stack_presort: %d\n", stacks->stack_a[i], stacks->stack_presort[i]);
 			return (1);
 		}
 		i--;
 	}
-	// printf("Sorted");
+	printf("Sorted");
 	return (0);
 }
 // int	sort_check(t_stacks *stacks)
