@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/26 20:33:57 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:28:51 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,18 +417,41 @@ void	push_back_to_a(t_stacks *stacks)
 	}
 }
 
+void	sort(t_stacks *stacks)
+{
+	if (stacks->stack_a_len == 3)
+	{
+		sort_3(stacks->stack_a, stacks->stack_a_len);
+		return ;
+	}
+	// else if (stacks->stack_a_len == 4)
+	// {
+	// }
+	// else if (stacks->stack_a_len == 5)
+	// {
+	// 	sort_5(stacks);
+	// 	return ;
+	// }
+
+	while (stacks->stack_a_len > 3)
+	{
+		push_average_to_b(stacks);
+	}
+	sort_3(stacks->stack_a, stacks->stack_a_len);
+
+}
 
 void	sort(t_stacks *stacks)
 {
 	// int	cheapest_index;
 
-	if (stacks->stack_a_len == 4)
-		push_b(stacks);
-	else if (stacks->stack_a_len >= 5)
-	{
-		push_b(stacks);
-		push_b(stacks);
-	}
+	// if (stacks->stack_a_len == 4)
+	// 	push_b(stacks);
+	// else if (stacks->stack_a_len >= 5)
+	// {
+	// 	push_b(stacks);
+	// 	push_b(stacks);
+	// }
 
 	// while (stacks->stack_a_len > 5)
 	// {
@@ -456,9 +479,6 @@ void	sort(t_stacks *stacks)
 	// }
 
 	// sort_5(stacks, stacks->stack_a, stacks->stack_a_len);
-
-
-	push_average_to_b(stacks);
 
 	sort_3(stacks->stack_a, stacks->stack_a_len);
 

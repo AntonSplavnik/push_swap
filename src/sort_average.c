@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:34:50 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/26 20:26:09 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:19:53 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,11 @@ int	find_index_to_push(int *stack, int len, int avrg)
 }
 void	push_average_to_b(t_stacks *stacks)
 {
-	while (stacks->stack_a_len > 3)
-	{
 		int	average = sum(stacks->stack_a, stacks->stack_a_len) / stacks->stack_a_len;
 		int	index_to_push = find_index_to_push(stacks->stack_a, stacks->stack_a_len, average);
 		// int	closest_number = find_closes_num(stacks->stack_a, stacks->stack_a_len, average);
 		// int	index_of_closesst = find_index(stacks->stack_a, stacks->stack_a_len, closest_number);
 		// int	index_of_num_to_push = find_index(stacks->stack_a, stacks->stack_a_len, number_to_push);
-
 
 		if (index_to_push >= stacks->stack_a_len / 2)
 		{
@@ -107,6 +104,6 @@ void	push_average_to_b(t_stacks *stacks)
 			}
 		}
 		push_b(stacks);
-	}
+
 }
 

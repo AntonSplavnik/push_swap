@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:36:57 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/25 22:40:00 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:26:08 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int calc_largest(int *stack, int len)
 }
 
 
-void sort_5(t_stacks *stacks, int *stack, int len)
+void sort_5(t_stacks *stacks)
 {
 
-	if (len != 5 || sort_check(stack, len) == 0)
+	if (stacks->stack_a_len != 5 || sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
 		return ;
 
-    // Step 1: Move the smallest number to the top of the stack
+    // Step 1: Move largest number to the top of the stack
 	while (stacks->stack_a_len > 3)
 	{
 		int	max_index_a = max_index(stacks->stack_a, stacks->stack_a_len);
@@ -66,11 +66,13 @@ void sort_5(t_stacks *stacks, int *stack, int len)
 		push_b(stacks);
 	}
 
+	// swap numbers in b if needed
 	if (stacks->stack_b[stacks->stack_b_len - 1] < stacks->stack_b[stacks->stack_b_len - 2])
 		swap_b(stacks);
 
 	sort_3(stacks->stack_a, stacks->stack_a_len);
 
+	// push back to A
 	int	i = 0;
 	while (i < 2)
 	{
@@ -97,6 +99,7 @@ void sort_5(t_stacks *stacks, int *stack, int len)
 		i++;
 	}
 
+//	bring smallest index to the top of A
 	int	min_index_a = min_index(stacks->stack_a, stacks->stack_a_len);
 	if (min_index_a >= stacks->stack_a_len / 2)
 	{

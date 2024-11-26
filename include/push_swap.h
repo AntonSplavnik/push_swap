@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/26 20:10:18 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:27:15 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	sort_3(int *stack, int len);
 //	sort.5.c
 int		calc_smallest(int *stack, int len);
 int		calc_largest(int *stack, int len);
-void	sort_5(t_stacks *stacks, int *stack, int len);
+void	sort_5(t_stacks *stacks);
 
 // sort.c
 // int		find_min(t_stacks *stacks);
@@ -122,7 +122,7 @@ void	push_cheapest_to_b(t_stacks *stacks, int index);
 void	sort(t_stacks *stacks);
 
 // move_to_pos.c
-void move_to_correct_position(t_stacks *stacks);
+void	move_to_correct_position(t_stacks *stacks);
 
 // sorting.c
 void	sorter(t_stacks *stacks);
