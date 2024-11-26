@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:26:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/26 21:28:51 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 23:43:15 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,69 +94,6 @@ int	find_correct_position_in_b(t_stacks *stacks, int num)
 
 	return (0);
 }
-
-// int	calculate_operations_b(t_stacks *stacks, int num)
-// {
-// 	int	max;
-// 	int	min;
-// 	int	i;
-
-// 	max = find_max(stacks);
-// 	min = find_min(stacks);
-
-// 	if (stacks->stack_b_len == 0 || num > max || num < min)
-// 	{
-// 		i = stacks->stack_b_len - 1;
-// 		while (i >= 0)
-// 		{
-// 			if (stacks->stack_b[i] == max)
-// 			{
-// 				if (i == stacks->stack_b_len - 1)
-// 					return (0);
-// 				else
-// 					return (i + 1); // i
-// 			}
-// 			i--;
-// 		}
-// 		return (stacks->stack_b_len - 1);
-// 	}
-// 	if (num < stacks->stack_b[0] && num > stacks->stack_b[stacks->stack_b_len - 1])
-// 	return (0); //1
-
-// 	i = stacks->stack_b_len - 1;
-// 	while (i > 0)
-// 	{
-// 		if (stacks->stack_b[i] > num && stacks->stack_b[i - 1] < num)
-// 		{
-// 			// printf("calc pos in B: %d\n", ((stacks->stack_b_len) - i));
-// 			return (stacks->stack_b_len - i);
-// 		}
-// 		i--;
-// 	}
-// 	return (stacks->stack_b_len - 1);
-// }
-
-// int	compare_operations(t_stacks *stacks, int operations_a, int operations_b, int index_a, int pos_in_b)
-// {
-// 	int	result;
-// 	int	same_direction;
-
-// 	result = 0;
-// 	same_direction = 0;
-// 	if ((index_a <= stacks->stack_a_len / 2 && pos_in_b <= stacks->stack_b_len / 2) \
-// 			|| (index_a > stacks->stack_a_len / 2 && pos_in_b > stacks->stack_b_len / 2))
-// 			same_direction = 1;
-// 	if (same_direction == 1)
-// 	{
-// 		if (operations_a > operations_b)
-// 			result = operations_a;
-// 		else
-// 			result = operations_b;
-// 	}
-// 	else
-// 		result = operations_a + operations_b;
-// 	return (result);
-// }
 
 int	calculate_stack_operations(int stack_size, int index)
 {
@@ -419,64 +356,40 @@ void	push_back_to_a(t_stacks *stacks)
 
 void	sort(t_stacks *stacks)
 {
-	if (stacks->stack_a_len == 3)
+	int	cheapest_index;
+
+	if (stacks->stack_a_len == 4)
+		push_b(stacks);
+	else if (stacks->stack_a_len >= 5)
 	{
-		sort_3(stacks->stack_a, stacks->stack_a_len);
-		return ;
+		push_b(stacks);
+		push_b(stacks);
 	}
-	// else if (stacks->stack_a_len == 4)
-	// {
-	// }
-	// else if (stacks->stack_a_len == 5)
-	// {
-	// 	sort_5(stacks);
-	// 	return ;
-	// }
 
-	while (stacks->stack_a_len > 3)
+	while (stacks->stack_a_len > 5)
 	{
-		push_average_to_b(stacks);
+		cheapest_index = find_cheapest_in_a(stacks);
+		push_cheapest_to_b(stacks, cheapest_index);
 	}
-	sort_3(stacks->stack_a, stacks->stack_a_len);
 
-}
+	int	max_index_b = max_index(stacks->stack_b, stacks->stack_b_len);
 
-void	sort(t_stacks *stacks)
-{
-	// int	cheapest_index;
-
-	// if (stacks->stack_a_len == 4)
-	// 	push_b(stacks);
-	// else if (stacks->stack_a_len >= 5)
-	// {
-	// 	push_b(stacks);
-	// 	push_b(stacks);
-	// }
-
-	// while (stacks->stack_a_len > 5)
-	// {
-	// 	cheapest_index = find_cheapest_in_a(stacks);
-	// 	push_cheapest_to_b(stacks, cheapest_index);
-	// }
-
-	// int	max_index_b = max_index(stacks->stack_b, stacks->stack_b_len);
-
-	// if (max_index_b >= stacks->stack_b_len / 2)
-	// {
-	// 	while (max_index_b != stacks->stack_b_len - 1)
-	// 	{
-	// 		rotate_b(stacks);
-	// 		max_index_b = (max_index_b + 1) % stacks->stack_b_len;
-	// 	}
-	// }
-	// else
-	// {
-	// 	while (max_index_b != stacks->stack_b_len - 1)
-	// 	{
-	// 		reverse_rotate_b(stacks);
-	// 		max_index_b = (max_index_b - 1 + stacks->stack_b_len) % stacks->stack_b_len;
-	// 	}
-	// }
+	if (max_index_b >= stacks->stack_b_len / 2)
+	{
+		while (max_index_b != stacks->stack_b_len - 1)
+		{
+			rotate_b(stacks);
+			max_index_b = (max_index_b + 1) % stacks->stack_b_len;
+		}
+	}
+	else
+	{
+		while (max_index_b != stacks->stack_b_len - 1)
+		{
+			reverse_rotate_b(stacks);
+			max_index_b = (max_index_b - 1 + stacks->stack_b_len) % stacks->stack_b_len;
+		}
+	}
 
 	// sort_5(stacks, stacks->stack_a, stacks->stack_a_len);
 

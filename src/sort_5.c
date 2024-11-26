@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:36:57 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/26 21:26:08 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/26 23:22:45 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,61 @@ int calc_largest(int *stack, int len)
     return largest;
 }
 
+int	find_correct_pos_in_a(t_stacks *stacks)
+{
+	int	num = stacks->stack_b[stacks->stack_b_len - 1];
+	int	target_pos;
+	int	next_pos;
+	int	i;
+
+	target_pos = -1;
+	i = stacks->stack_a_len - 1;
+
+	while (i >= 0)
+	{
+		next_pos = (i - 1 + stacks->stack_a_len) % stacks->stack_a_len;
+
+		if(stacks->stack_a[i] < num && stacks->stack_a[next_pos] > num)
+		{
+			target_pos = next_pos;
+			break ;
+		}
+		i--;
+	}
+
+	int min_index_a = min_index(stacks->stack_a, stacks->stack_a_len);
+	if (num < stacks->stack_a[min_index_a])
+		target_pos = min_index_a;
+	// i = stacks->stack_a_len - 1;
+	// if (target_pos == -1)
+	// {
+	// 	while (i >= 0)
+	// 	{
+	// 		if (stacks->stack_a[i] > num)
+	// 		{
+	// 			target_pos = i;
+	// 			printf("target_pos top: %d\n", target_pos);
+	// 			break ;
+	// 		}
+	// 		i--;
+	// 	}
+	// }
+
+	if (target_pos == -1)
+	{
+		target_pos = stacks->stack_a_len - 1;
+	}
+
+	return (target_pos);
+}
 
 void sort_5(t_stacks *stacks)
 {
 
 	if (stacks->stack_a_len != 5 || sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
+	{
 		return ;
+	}
 
     // Step 1: Move largest number to the top of the stack
 	while (stacks->stack_a_len > 3)
@@ -68,7 +117,9 @@ void sort_5(t_stacks *stacks)
 
 	// swap numbers in b if needed
 	if (stacks->stack_b[stacks->stack_b_len - 1] < stacks->stack_b[stacks->stack_b_len - 2])
+	{
 		swap_b(stacks);
+	}
 
 	sort_3(stacks->stack_a, stacks->stack_a_len);
 
