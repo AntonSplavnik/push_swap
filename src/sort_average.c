@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   avarade_presort.c                                  :+:      :+:    :+:   */
+/*   sort_average.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:34:50 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/26 21:19:53 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/27 02:31:53 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	find_index_to_push(int *stack, int len, int avrg)
 	int	i = len - 1;
 	while (i >= 0)
 	{
-		if (stack[i] < avrg)
+		if (stack[i] > avrg)
 			return i;
 		i--;
 	}
-	return (stack[len - 1]);
+	return (-1);
 }
 void	push_average_to_b(t_stacks *stacks)
 {
@@ -86,6 +86,12 @@ void	push_average_to_b(t_stacks *stacks)
 		// int	closest_number = find_closes_num(stacks->stack_a, stacks->stack_a_len, average);
 		// int	index_of_closesst = find_index(stacks->stack_a, stacks->stack_a_len, closest_number);
 		// int	index_of_num_to_push = find_index(stacks->stack_a, stacks->stack_a_len, number_to_push);
+		if (index_to_push == 1)
+		{
+			printf("error: index\n");
+			free_stacks(stacks);
+			exit (1);
+		}
 
 		if (index_to_push >= stacks->stack_a_len / 2)
 		{
@@ -106,4 +112,3 @@ void	push_average_to_b(t_stacks *stacks)
 		push_b(stacks);
 
 }
-

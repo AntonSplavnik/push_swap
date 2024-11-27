@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/27 00:00:29 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/27 02:59:46 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,27 @@ void	algorythm(t_stacks *stacks)
 
 	while (stacks->stack_b_len > 0)
 	{
+		// for (int i = stacks->stack_a_len; i > 0; i--)
+		// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+
+		// ft_putstr("\n");
+
+		// for (int i = stacks->stack_b_len; i > 0; i--)
+		// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
+
 		cheapest_index = find_cheapest_in_b(stacks);
+
+		// printf("cheapest index: %d\n", cheapest_index);
+
 		push_cheapest_to_a(stacks, cheapest_index);
+
+		// for (int i = stacks->stack_a_len; i > 0; i--)
+		// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+
+		// ft_putstr("\n");
+
+		// for (int i = stacks->stack_b_len; i > 0; i--)
+		// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 	}
 
 	int	min_index_a = min_index(stacks->stack_a, stacks->stack_a_len);
