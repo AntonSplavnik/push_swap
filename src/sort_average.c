@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:34:50 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 02:31:53 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/27 03:12:16 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	push_average_to_b(t_stacks *stacks)
 		// int	closest_number = find_closes_num(stacks->stack_a, stacks->stack_a_len, average);
 		// int	index_of_closesst = find_index(stacks->stack_a, stacks->stack_a_len, closest_number);
 		// int	index_of_num_to_push = find_index(stacks->stack_a, stacks->stack_a_len, number_to_push);
-		if (index_to_push == 1)
+		if (index_to_push == -1)
 		{
 			printf("error: index\n");
 			free_stacks(stacks);
