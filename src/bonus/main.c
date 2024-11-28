@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 22:57:47 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/28 01:29:41 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:42:56 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	execution(t_stacks *stacks, char **argv)
 	char *command;
 
 	init(stacks, argv);
+	quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
 
 	// if (sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
 	// {
@@ -88,6 +89,14 @@ void	execution(t_stacks *stacks, char **argv)
 		free(command);
 		command = get_next_line(0);
 	}
+
+	// for (int i = stacks->stack_a_len; i > 0; i--)
+	// 	printf("%d. stack_A: %d\n", i - 1, stacks->stack_a[i - 1]);
+
+	// ft_putstr("\n");
+
+	// for (int i = stacks->stack_b_len; i > 0; i--)
+	// 	printf("%d. stack_B: %d\n", i - 1, stacks->stack_b[i - 1]);
 
 	if (stacks->stack_b_len == 0 && sort_compare(stacks) == 0)
 	{

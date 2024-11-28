@@ -6,7 +6,7 @@
 #    By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 17:36:04 by asplavni          #+#    #+#              #
-#    Updated: 2024/11/28 02:00:56 by asplavni         ###   ########.fr        #
+#    Updated: 2024/11/28 16:09:18 by asplavni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,25 +82,17 @@ BONUS_TARGET = checker
 all: $(MANDATORY_TARGET)
 
 # Rule to build the mandatory executable
-$(MANDATORY_TARGET): clean_checker $(ALGO_OBJ) $(SHARED_OBJ)
+$(MANDATORY_TARGET): $(ALGO_OBJ) $(SHARED_OBJ)
 	$(CC) $(CFLAGS) $(ALGO_OBJ) $(SHARED_OBJ) -o $(MANDATORY_TARGET)
 
 # Rule to build the bonus executable
-bonus: clean_push_swap $(BONUS_OBJ) $(GNL_OBJ) $(SHARED_OBJ)
+bonus: $(BONUS_OBJ) $(GNL_OBJ) $(SHARED_OBJ)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) $(GNL_OBJ) $(SHARED_OBJ) -o $(BONUS_TARGET)
 
 # Rule to create object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER_SHARED) $(HEADER_GNL) $(HEADER_BONUS)
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
-
-# Remove push_swap executable before building checker
-clean_push_swap:
-	rm -f $(MANDATORY_TARGET)
-
-# Remove checker executable before building push_swap
-clean_checker:
-	rm -f $(BONUS_TARGET)
 
 # Clean object files
 clean:
@@ -114,4 +106,4 @@ fclean: clean
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re bonus clean_push_swap clean_checker
+.PHONY: all clean fclean re bonus

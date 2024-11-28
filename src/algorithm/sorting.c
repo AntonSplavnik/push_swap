@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/28 01:26:02 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:36:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	algorythm(t_stacks *stacks)
 	int	cheapest_index;
 
 	quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
-	// sort(stacks);
 
 	if (stacks->stack_a_len == 2)
 	{
@@ -74,7 +73,6 @@ void	algorythm(t_stacks *stacks)
 			}
 		}
 	}
-
 
 	// ft_putstr("\nEND OF OPERATIONS\n");
 
