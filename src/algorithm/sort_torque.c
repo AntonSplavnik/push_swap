@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:34:35 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:54:51 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:26:45 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void	push_cheapest_to_a(t_stacks *stacks, int index)
 	{
 		while (index != stacks->stack_b_len - 1)
 		{
-			rotate_b(stacks);
+			rotate_b(stacks, 1);
 			index = (index + 1) % stacks->stack_b_len;
 		}
 	}
@@ -189,21 +189,21 @@ void	push_cheapest_to_a(t_stacks *stacks, int index)
 	{
 		while (index != stacks->stack_b_len - 1)
 		{
-			reverse_rotate_b(stacks);
+			reverse_rotate_b(stacks, 1);
 			index = (index - 1 + stacks->stack_b_len) % stacks->stack_b_len;
 		}
 	}
 
 	if (pos_a == stacks->stack_a_len - 1)
 	{
-		push_a(stacks);
+		push_a(stacks, 1);
 		return ;
 	}
 	else if (pos_a >= stacks->stack_a_len / 2)
 	{
 		while (pos_a != stacks->stack_a_len - 1)
 		{
-			rotate_a(stacks);
+			rotate_a(stacks, 1);
 			pos_a = (pos_a + 1) % stacks->stack_a_len;
 		}
 	}
@@ -211,9 +211,9 @@ void	push_cheapest_to_a(t_stacks *stacks, int index)
 	{
 		while (pos_a != stacks->stack_a_len - 1)
 		{
-			reverse_rotate_a(stacks);
+			reverse_rotate_a(stacks, 1);
 			pos_a = (pos_a - 1 + stacks->stack_a_len) % stacks->stack_a_len;
 		}
 	}
-	push_a(stacks);
+	push_a(stacks, 1);
 }

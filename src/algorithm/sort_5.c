@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:36:57 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:45:09 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:28:19 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void sort_5(t_stacks *stacks)
 		{
 			while (max_index_a != stacks->stack_a_len - 1)
 			{
-				rotate_a(stacks);
+				rotate_a(stacks, 1);
 				max_index_a = (max_index_a + 1) % stacks->stack_a_len;
 			}
 		}
@@ -108,18 +108,18 @@ void sort_5(t_stacks *stacks)
 		{
 			while (max_index_a != stacks->stack_a_len - 1)
 			{
-				reverse_rotate_a(stacks);
+				reverse_rotate_a(stacks, 1);
 				max_index_a = (max_index_a - 1 + stacks->stack_a_len) % stacks->stack_a_len;
 			}
 		}
 
-		push_b(stacks);
+		push_b(stacks, 1);
 	}
 
 	// swap numbers in b if needed
 	if (stacks->stack_b[stacks->stack_b_len - 1] < stacks->stack_b[stacks->stack_b_len - 2])
 	{
-		swap_b(stacks);
+		swap_b(stacks, 1);
 	}
 
 	sort_3(stacks->stack_a, stacks->stack_a_len);
@@ -134,7 +134,7 @@ void sort_5(t_stacks *stacks)
 		{
 			while (target_pos != stacks->stack_a_len - 1)
 			{
-				rotate_a(stacks);
+				rotate_a(stacks, 1);
 				target_pos = (target_pos + 1) % stacks->stack_a_len;
 			}
 		}
@@ -142,12 +142,12 @@ void sort_5(t_stacks *stacks)
 		{
 			while (target_pos != stacks->stack_a_len - 1)
 			{
-				reverse_rotate_a(stacks);
+				reverse_rotate_a(stacks, 1);
 				target_pos = (target_pos - 1 + stacks->stack_a_len) % stacks->stack_a_len;
 			}
 		}
 		// printf("b_len: %d\n", stacks->stack_b_len);
-		push_a(stacks);
+		push_a(stacks, 1);
 		i++;
 	}
 
@@ -157,7 +157,7 @@ void sort_5(t_stacks *stacks)
 	{
 		while (min_index_a != stacks->stack_a_len - 1)
 		{
-			rotate_a(stacks);
+			rotate_a(stacks, 1);
 			min_index_a = (min_index_a + 1) % stacks->stack_a_len;
 		}
 	}
@@ -165,7 +165,7 @@ void sort_5(t_stacks *stacks)
 	{
 		while (min_index_a != stacks->stack_a_len - 1)
 		{
-			reverse_rotate_a(stacks);
+			reverse_rotate_a(stacks, 1);
 			min_index_a = (min_index_a - 1 + stacks->stack_a_len) % stacks->stack_a_len;
 		}
 	}

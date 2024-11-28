@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:03:59 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:56:40 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/27 23:15:45 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	stack_presorted_init(t_stacks *stacks)
 
 }
 
-void	init(char **argv, t_stacks *stacks)
+void	init(t_stacks *stacks, char **argv)
 {
 	empty_argument_checker(argv);
 	stack_a_initialisation(stacks, argv);

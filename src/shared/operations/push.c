@@ -6,13 +6,13 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:56:21 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:52:58 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:20:57 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 
-void	push_a(t_stacks *stacks)
+void	push_a(t_stacks *stacks, int flag)
 {
 	if (stacks->stack_b_len == 0)
 		return ;
@@ -28,11 +28,12 @@ void	push_a(t_stacks *stacks)
 		stacks->stack_a_len++;
 		stacks->stack_b_len--;
 	}
-
+	if (flag == 1)
 	ft_putstr("pa\n");
+
 }
 
-void	push_b(t_stacks *stacks)
+void	push_b(t_stacks *stacks, int flag)
 {
 	if (stacks->stack_a_len == 0)
 		return ;
@@ -48,6 +49,6 @@ void	push_b(t_stacks *stacks)
 		stacks->stack_b_len++;
 		stacks->stack_a_len--;
 	}
-
+	if (flag == 1)
 	ft_putstr("pb\n");
 }

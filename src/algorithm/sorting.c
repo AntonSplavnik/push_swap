@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:40:20 by antonsplavn       #+#    #+#             */
-/*   Updated: 2024/11/27 21:45:27 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:26:02 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	algorythm(t_stacks *stacks)
 	if (stacks->stack_a_len == 2)
 	{
 		if (stacks->stack_a[1] > stacks->stack_a[0])
-		swap_a(stacks);
+		swap_a(stacks, 1);
 		return ;
 	}
 
@@ -61,7 +61,7 @@ void	algorythm(t_stacks *stacks)
 		{
 			while (min_index_a != stacks->stack_a_len - 1)
 			{
-				rotate_a(stacks);
+				rotate_a(stacks, 1);
 				min_index_a = (min_index_a + 1) % stacks->stack_a_len;
 			}
 		}
@@ -69,7 +69,7 @@ void	algorythm(t_stacks *stacks)
 		{
 			while (min_index_a != stacks->stack_a_len - 1)
 			{
-				reverse_rotate_a(stacks);
+				reverse_rotate_a(stacks, 1);
 				min_index_a = (min_index_a - 1 + stacks->stack_a_len) % stacks->stack_a_len;
 			}
 		}

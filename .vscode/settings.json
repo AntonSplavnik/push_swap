@@ -9,6 +9,7 @@
 		"chrono": "c",
 		"random": "c",
 		"algorithm": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"shared.h": "c"
 	}
 }

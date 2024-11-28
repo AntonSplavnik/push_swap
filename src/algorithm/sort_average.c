@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:34:50 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:55:18 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:26:59 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	push_average_to_b(t_stacks *stacks)
 		{
 			while (index_to_push != stacks->stack_a_len - 1)
 			{
-				rotate_a(stacks);
+				rotate_a(stacks, 1);
 				index_to_push = (index_to_push + 1) % stacks->stack_a_len;
 			}
 		}
@@ -106,10 +106,10 @@ void	push_average_to_b(t_stacks *stacks)
 		{
 			while (index_to_push != stacks->stack_a_len - 1)
 			{
-				reverse_rotate_a(stacks);
+				reverse_rotate_a(stacks, 1);
 				index_to_push = (index_to_push - 1 + stacks->stack_a_len) % stacks->stack_a_len;
 			}
 		}
-		push_b(stacks);
+		push_b(stacks, 1);
 
 }

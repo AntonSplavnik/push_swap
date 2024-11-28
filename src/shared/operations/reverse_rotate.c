@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 17:57:57 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:51:06 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:21:59 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,30 @@ void	reverse_rotate(int *stack, int len)
 	stack[len - 1] = buffer;
 }
 
-void	reverse_rotate_a(t_stacks *stacks)
+void	reverse_rotate_a(t_stacks *stacks, int flag)
 {
 	if (stacks->stack_a_len < 2)
 		return ;
 	reverse_rotate(stacks->stack_a, stacks->stack_a_len);
-	ft_putstr("rra\n");
+	if (flag == 1)
+		ft_putstr("rra\n");
 }
 
-void	reverse_rotate_b(t_stacks *stacks)
+void	reverse_rotate_b(t_stacks *stacks, int flag)
 {
 	if (stacks->stack_b_len < 2)
 		return ;
 	reverse_rotate(stacks->stack_b, stacks->stack_b_len);
-	ft_putstr("rrb\n");
+	if (flag == 1)
+		ft_putstr("rrb\n");
 }
 
-void	reverse_rotate_a_b(t_stacks *stacks)
+void	reverse_rotate_a_b(t_stacks *stacks, int flag)
 {
 	if (stacks->stack_a_len < 2 || stacks->stack_b_len < 2)
 		return ;
 	reverse_rotate(stacks->stack_a, stacks->stack_a_len);
 	reverse_rotate(stacks->stack_b, stacks->stack_b_len);
-	ft_putstr("rrr\n");
-
+	if (flag == 1)
+		ft_putstr("rrr\n");
 }

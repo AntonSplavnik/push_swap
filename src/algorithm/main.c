@@ -6,16 +6,16 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:56:19 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:28:34 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 #include "algorithm.h"
 
-void	execution(char **argv, t_stacks *stacks)
+void	execution(t_stacks *stacks, char **argv)
 {
-	init(argv, stacks);
+	init(stacks, argv);
 	if (sort_check(stacks->stack_a, stacks->stack_a_len) == 0)
 	{
 		free_stacks(stacks);
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 		ft_putstr("Error: Wrong number of arguments.\n"
 			"Should be more then two arguments.\n");
 	else
-		execution(argv, &stacks);
+		execution(&stacks, argv);
 	ft_putstr("\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 21:30:34 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 22:08:31 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 00:29:26 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ void	sorter(t_stacks *stacks);
 void	algorythm(t_stacks *stacks);
 
 //execution
-void	execution(char **argv, t_stacks *stacks);
+void	execution(t_stacks *stacks, char **argv);
 
 //main.c
-void	free_stacks(t_stacks *stacks);
 int		main(int argc, char **argv);
 
 
