@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:49 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/29 00:34:42 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/29 04:08:08 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ int	main(int argc, char **argv)
 		ft_putstr("Error\n");
 	else
 		execution(&stacks, argv);
-	ft_putstr("\n");
 	return (0);
 }

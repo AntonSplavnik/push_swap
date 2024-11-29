@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 01:42:36 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/29 02:33:14 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/29 04:08:10 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	find_insert_position_between(t_stacks *stacks, int num)
 
 int	find_correct_position_in_a(t_stacks *stacks, int num)
 {
-	int	i;
 	int	max;
 	int	min;
 
@@ -51,7 +50,6 @@ int	find_correct_position_in_a(t_stacks *stacks, int num)
 		return (0);
 	max = find_max(stacks);
 	min = find_min(stacks);
-	i = stacks->stack_a_len - 1;
 	if (num < min || num > max)
 		return (find_insert_position_for_bounds(stacks, min));
 	if (num > stacks->stack_a[0] && \
