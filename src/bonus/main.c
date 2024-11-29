@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 22:57:47 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/28 22:07:40 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/29 02:50:44 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	commands_call(t_stacks *stacks, char *command)
 	return (0);
 }
 
-char	*read_commands(t_stacks *stacks, char *commands)
+char	*read_commands(t_stacks *stacks)
 {
+	char	*commands;
+
+	commands = get_next_line(0);
 	while (commands != NULL)
 	{
 		if (commands_call(stacks, commands) == 1)
@@ -60,12 +63,11 @@ char	*read_commands(t_stacks *stacks, char *commands)
 	return (commands);
 }
 
-void	sort_check_checker(t_stacks *stacks, char *command)
+void	sort_check_checker(t_stacks *stacks)
 {
 	if (stacks->stack_b_len == 0 && sort_compare(stacks) == 0)
 	{
 		ft_putstr("OK\n");
-		free(command);
 		free_stacks(stacks);
 		exit (0);
 	}
@@ -76,13 +78,10 @@ void	sort_check_checker(t_stacks *stacks, char *command)
 
 void	execution(t_stacks *stacks, char **argv)
 {
-	char	*commands;
-
 	init(stacks, argv);
 	quicksort(stacks->stack_presort, 0, stacks->stack_presort_len - 1);
-	commands = get_next_line(0);
-	read_commands(stacks, commands);
-	sort_check_checker(stacks, commands);
+	read_commands(stacks);
+	sort_check_checker(stacks);
 }
 
 int	main(int argc, char **argv)
