@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:21:26 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/28 01:22:49 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:13:48 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	rotate(int *stack, int len)
 
 	if (len < 2)
 		return ;
-
 	buffer = stack[len - 1];
-
 	i = len - 1;
 	while (i > 0)
 	{

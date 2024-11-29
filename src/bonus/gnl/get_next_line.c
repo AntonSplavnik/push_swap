@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:16:20 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/28 00:38:28 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:08:27 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,42 +50,3 @@ char	*get_next_line(int fd)
 	stash = clean_stash(stash);
 	return (line_to_show);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	int		fd = open(argv[1], O_RDWR);
-// 	char	*test_result = get_next_line(fd);
-// 	printf("Result: %s\n", test_result);
-
-// 	int		fd2 = open(argv[1], O_RDWR);
-// 	printf("Result: %s\n", test_result);
-
-// 	return (0);
-// }
-
-// #include <stdio.h>
-// #include <unistd.h>
-// int	main(int argc, char **argv)
-// {
-// 	int		file;
-// 	char	*temp;
-// 	int		fd;
-
-// 	(void)argc;
-// 	file = open(argv[1], O_RDWR);
-// 	//fd = open(argv[2], O_RDWR);
-// 	temp = get_next_line(file);
-// 	printf("%s\n", temp);
-// 	temp = get_next_line(file);
-// 	printf("%s\n", temp);
-// 	temp = get_next_line(file);
-// 	printf("%s\n", temp);
-// 	temp = get_next_line(fd);
-// 	printf("%s\n", temp);
-// 	temp = get_next_line(file);
-// 	printf("%s\n", temp);
-// 	temp = get_next_line(file);
-// 	printf("%s\n", temp);
-// 	free(temp);
-// 	close(file);
-// }

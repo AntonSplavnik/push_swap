@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:40:54 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/28 01:25:17 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 23:04:55 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ long	ft_atoi(char *input_str);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 
+// utility_functions_2.c
+int		ft_strcmp(char *input1, char *input2);
+
 // ft_split.c
 int		ft_split_token_counter(char *input, char c);
 void	ft_split_free_alloc(char **return_str, int j);
@@ -46,8 +49,9 @@ char	**ft_split_fill_arrays(char *input, char **return_str, char c);
 char	**ft_split(char *input, char c);
 char	*ft_split_calloc_call(char **return_str, int i, int j, int start);
 
-// number_counter.c
+// parsing_util.c
 int		number_counter(char **argv);
+void	free_stacks(t_stacks *stacks);
 
 // parsing.c
 void	empty_argument_checker(char **argv);
@@ -57,18 +61,18 @@ int		input_restrictions_helper(char *input_str, int i);
 int		input_restrictions(char *input_str);
 
 // fill_array.c
-void	clenup_on_error(char **processed_argument, t_stacks *int_array);
+void	clenup_on_error(t_stacks *stacks, char **processed_argument);
+void	free_processed_argument(char **processed_argument);
 int		process_and_validate_argument(t_stacks *int_array,
 			char *processed_argument, int k);
-void	free_processed_argument(char **processed_argument);
-void	fill_array(char **argv, t_stacks *int_array);
-void	free_stacks(t_stacks *stacks);
+void	fill_array(t_stacks *stacks, char **argv);
 
 // initialization
-void	init(t_stacks *stacks, char **argv);
-void	stack_a_initialisation(t_stacks *int_arrays, char **argv);
-void	stack_b_initialisation(t_stacks	*int_arrays);
+void	stacks_init(t_stacks *stacks);
+void	stack_a_initialisation(t_stacks *stacks, char **argv);
+void	stack_b_initialisation(t_stacks	*stacks);
 void	stack_presorted_init(t_stacks *stacks);
+void	init(t_stacks *stacks, char **argv);
 
 //operations
 void	push_a(t_stacks *stacks, int flag);
@@ -91,11 +95,10 @@ void	reverse_rotate_a_b(t_stacks *stacks, int flag);
 
 // quicksort.c
 void	quicksort_swap(int *a, int *b);
-int		partition(int arr[], int low, int high);
-void	quicksort(int arr[], int low, int high);
+int		partition(int *arr, int low, int high);
+void	quicksort(int *arr, int low, int high);
 
 //sort check
-// int		sort_check(t_stacks *stacks);
 int		sort_check(int *input, int len);
 int		sort_compare(t_stacks *stacks);
 

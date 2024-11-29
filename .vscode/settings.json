@@ -10,6 +10,7 @@
 		"random": "c",
 		"algorithm": "c",
 		"ratio": "c",
-		"shared.h": "c"
+		"shared.h": "c",
+		"algorithm.h": "c"
 	}
 }

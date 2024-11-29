@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   number_counter.c                                   :+:      :+:    :+:   */
+/*   utility_functions_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 18:00:32 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:46:25 by asplavni         ###   ########.fr       */
+/*   Created: 2024/11/28 18:47:22 by asplavni          #+#    #+#             */
+/*   Updated: 2024/11/28 18:47:49 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 
-int	number_counter(char **argv)
+int	ft_strcmp(char *input1, char *input2)
 {
-	int		i;
-	int		j;
-	int		count;
-	char	**splited_arg;
+	int	i;
 
-	i = 1;
-	j = 0;
-	count = 0;
-	while (argv[i])
+	i = 0;
+	while (input1[i])
 	{
-		j = 0;
-		splited_arg = ft_split(argv[i], ' ');
-		if (splited_arg == NULL)
-			return (0);
-		while (splited_arg[j])
+		if (input1[i] != input2[i])
 		{
-			count++;
-			free(splited_arg[j]);
-			j++;
+			return (1);
 		}
 		i++;
-		free (splited_arg);
 	}
-	return (count);
+	if (input1[i] || input2[i])
+		return (1);
+	return (0);
 }

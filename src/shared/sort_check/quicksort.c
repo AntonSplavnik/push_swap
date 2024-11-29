@@ -6,47 +6,50 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:03:33 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/27 21:47:05 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 23:04:54 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 
-// Function to swap two elements
 void	quicksort_swap(int *a, int *b)
 {
-	int	temp = *a;
+	int	temp;
+
+	temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-// Partition function
-int	partition(int arr[], int low, int high)
+int	partition(int *arr, int low, int high)
 {
-	int	pivot = arr[high];	// Choosing the last element as the pivot
-	int	i = low - 1;		// Index of the smaller element
+	int	pivot;
+	int	i;
+	int	j;
 
-	for (int j = low; j <= high - 1; j++)
+	j = low;
+	i = low - 1;
+	pivot = arr[high];
+	while (j <= high - 1)
 	{
-		// If the current element is smaller than or equal to the pivot
 		if (arr[j] >= pivot)
 		{
 			i++;
 			quicksort_swap(&arr[i], &arr[j]);
 		}
+		j++;
 	}
 	quicksort_swap(&arr[i + 1], &arr[high]);
 	return (i + 1);
 }
 
-// Quicksort function
-void	quicksort(int arr[], int low, int high)
+void	quicksort(int *arr, int low, int high)
 {
+	int	pi;
+
 	if (low < high)
 	{
-		int pi = partition(arr, low, high);	// Partitioning index
-
-		// Recursively sort elements before and after partition
+		pi = partition(arr, low, high);
 		quicksort(arr, low, pi - 1);
 		quicksort(arr, pi + 1, high);
 	}

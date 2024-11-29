@@ -6,7 +6,7 @@
 #    By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 17:36:04 by asplavni          #+#    #+#              #
-#    Updated: 2024/11/28 16:09:18 by asplavni         ###   ########.fr        #
+#    Updated: 2024/11/29 01:44:18 by asplavni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,10 @@ HEADER_GNL = $(INC_DIR)/get_next_line.h
 HEADER_BONUS = $(INC_DIR)/checker.h
 
 # Source files
-ALGO_SRC = $(ALGO_DIR)/main.c $(ALGO_DIR)/sort_3.c $(ALGO_DIR)/sort_5.c \
-           $(ALGO_DIR)/sort_average.c $(ALGO_DIR)/sort_torque.c $(ALGO_DIR)/sorting.c
+ALGO_SRC = $(ALGO_DIR)/main.c $(ALGO_DIR)/sort_3.c $(ALGO_DIR)/sort_torque.c \
+           $(ALGO_DIR)/sort_average.c $(ALGO_DIR)/sorting.c \
+		   $(ALGO_DIR)/sort_utils.c $(ALGO_DIR)/sort_utils_2.c \
+		   $(ALGO_DIR)/sort_torque_2.c
 
 BONUS_SRC = $(BONUS_DIR)/main.c
 
@@ -59,11 +61,11 @@ INIT_SRC = $(INIT_DIR)/init.c
 OPERATIONS_SRC = $(OPERATIONS_DIR)/push.c $(OPERATIONS_DIR)/rotate.c \
                  $(OPERATIONS_DIR)/reverse_rotate.c $(OPERATIONS_DIR)/swap.c
 
-PARSING_SRC = $(PARSING_DIR)/fill_array.c $(PARSING_DIR)/number_counter.c $(PARSING_DIR)/parsing.c
+PARSING_SRC = $(PARSING_DIR)/fill_array.c $(PARSING_DIR)/parsing_util.c $(PARSING_DIR)/parsing.c
 
 SORT_CHECK_SRC = $(SORT_CHECK_DIR)/quicksort.c $(SORT_CHECK_DIR)/sort_check.c
 
-UTILITY_SRC = $(UTILITY_DIR)/ft_split.c $(UTILITY_DIR)/utility_functions.c
+UTILITY_SRC = $(UTILITY_DIR)/ft_split.c $(UTILITY_DIR)/utility_functions.c $(UTILITY_DIR)/utility_functions_2.c
 
 # Shared source files
 SHARED_SRC = $(INIT_SRC) $(OPERATIONS_SRC) $(PARSING_SRC) $(SORT_CHECK_SRC) $(UTILITY_SRC)

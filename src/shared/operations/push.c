@@ -6,7 +6,7 @@
 /*   By: asplavni <asplavni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:56:21 by asplavni          #+#    #+#             */
-/*   Updated: 2024/11/28 01:20:57 by asplavni         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:16:50 by asplavni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	push_a(t_stacks *stacks, int flag)
 	}
 	else
 	{
-		stacks->stack_a[stacks->stack_a_len] = stacks->stack_b[stacks->stack_b_len - 1];
+		stacks->stack_a[stacks->stack_a_len] \
+		= stacks->stack_b[stacks->stack_b_len - 1];
 		stacks->stack_a_len++;
 		stacks->stack_b_len--;
 	}
 	if (flag == 1)
-	ft_putstr("pa\n");
-
+		ft_putstr("pa\n");
 }
 
 void	push_b(t_stacks *stacks, int flag)
@@ -45,10 +45,11 @@ void	push_b(t_stacks *stacks, int flag)
 	}
 	else
 	{
-		stacks->stack_b[stacks->stack_b_len] = stacks->stack_a[stacks->stack_a_len - 1];
+		stacks->stack_b[stacks->stack_b_len] \
+		= stacks->stack_a[stacks->stack_a_len - 1];
 		stacks->stack_b_len++;
 		stacks->stack_a_len--;
 	}
 	if (flag == 1)
-	ft_putstr("pb\n");
+		ft_putstr("pb\n");
 }
